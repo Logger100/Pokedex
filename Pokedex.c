@@ -1,10 +1,94 @@
 #include <fxlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "pokemon.h"
+
 
 #define VISIBLE_LIST 5
 #define TEXT_WIDTH 20
 #define DETAIL_LINES 5
+#define SEARCH_LENGTH 15
+#define SEARCH_RESULTS 5
+
+
+/*
+ * ------------------------------------------------------------
+ * Function prototypes
+ * ------------------------------------------------------------
+ */
+
+void clear_screen(void);
+
+void print_text(
+    int x,
+    int y,
+    const char *text
+);
+
+void draw_header(
+    const char *text
+);
+
+int make_line(
+    const char *text,
+    char *line
+);
+
+const char *skip_line(
+    const char *text
+);
+
+const char *print_wrapped_line(
+    const char *text,
+    int x,
+    int y
+);
+
+int count_lines(
+    const char *text
+);
+
+char lower_char(
+    char c
+);
+
+int starts_with_ignore_case(
+    const char *text,
+    const char *search
+);
+
+int is_number(
+    const char *text
+);
+
+int number_search(
+    const char *text
+);
+
+void add_search_char(
+    char *search,
+    int *length,
+    char c
+);
+
+void draw_search(
+    const char *search,
+    int selected,
+    int result_count,
+    int *results
+);
+
+int search_screen(void);
+
+void draw_list(
+    int selected
+);
+
+int draw_detail(
+    int selected,
+    int scroll
+);
+
 
 /*
  * ------------------------------------------------------------
@@ -12,13 +96,13 @@
  * ------------------------------------------------------------
  */
 
-static void clear_screen(void)
+void clear_screen(void)
 {
     Bdisp_AllClr_DDVRAM();
 }
 
 
-static void print_text(
+void print_text(
     int x,
     int y,
     const char *text
@@ -33,11 +117,15 @@ static void print_text(
 }
 
 
-static void draw_header(
+void draw_header(
     const char *text
 )
 {
-    print_text(0, 0, text);
+    print_text(
+        0,
+        0,
+        text
+    );
 
     Bdisp_DrawLineVRAM(
         0,
@@ -54,7 +142,7 @@ static void draw_header(
  * ------------------------------------------------------------
  */
 
-static int make_line(
+int make_line(
     const char *text,
     char *line
 )
@@ -63,8 +151,10 @@ static int make_line(
     int last_space;
     int i;
 
+
     length = 0;
     last_space = -1;
+
 
     while (
         text[length] != '\0' &&
@@ -72,14 +162,19 @@ static int make_line(
     )
     {
         if (text[length] == ' ')
+        {
             last_space = length;
+        }
 
         length++;
     }
 
+
     /*
-     * Break at the last space if possible.
+     * If the line is too long, break at the last
+     * available space.
      */
+
     if (
         text[length] != '\0' &&
         last_space > 0
@@ -88,15 +183,38 @@ static int make_line(
         length = last_space;
     }
 
+
     /*
-     * Copy characters.
+     * Handle extremely long words.
      */
-    for (i = 0; i < length; i++)
+
+    if (length == 0)
+    {
+        if (text[0] == '\0')
+        {
+            line[0] = '\0';
+            return 0;
+        }
+
+        line[0] = text[0];
+        line[1] = '\0';
+
+        return 1;
+    }
+
+
+    for (
+        i = 0;
+        i < length;
+        i++
+    )
     {
         line[i] = text[i];
     }
 
+
     line[length] = '\0';
+
 
     return length;
 }
@@ -108,15 +226,20 @@ static int make_line(
  * ------------------------------------------------------------
  */
 
-static const char *skip_line(
+const char *skip_line(
     const char *text
 )
 {
     char line[TEXT_WIDTH + 1];
+
     int used;
 
+
     if (*text == '\0')
+    {
         return text;
+    }
+
 
     used =
         make_line(
@@ -124,16 +247,21 @@ static const char *skip_line(
             line
         );
 
+
     if (used <= 0)
+    {
         return text + 1;
+    }
+
 
     text += used;
 
-    /*
-     * Remove spaces at beginning of next line.
-     */
+
     while (*text == ' ')
+    {
         text++;
+    }
+
 
     return text;
 }
@@ -145,17 +273,22 @@ static const char *skip_line(
  * ------------------------------------------------------------
  */
 
-static const char *print_wrapped_line(
+const char *print_wrapped_line(
     const char *text,
     int x,
     int y
 )
 {
     char line[TEXT_WIDTH + 1];
+
     int used;
 
+
     if (*text == '\0')
+    {
         return text;
+    }
+
 
     used =
         make_line(
@@ -163,8 +296,12 @@ static const char *print_wrapped_line(
             line
         );
 
+
     if (used <= 0)
+    {
         return text + 1;
+    }
+
 
     print_text(
         x,
@@ -172,10 +309,15 @@ static const char *print_wrapped_line(
         line
     );
 
+
     text += used;
 
+
     while (*text == ' ')
+    {
         text++;
+    }
+
 
     return text;
 }
@@ -187,7 +329,7 @@ static const char *print_wrapped_line(
  * ------------------------------------------------------------
  */
 
-static int count_lines(
+int count_lines(
     const char *text
 )
 {
@@ -196,7 +338,9 @@ static int count_lines(
     int count;
     int used;
 
+
     count = 0;
+
 
     while (*text != '\0')
     {
@@ -206,18 +350,795 @@ static int count_lines(
                 line
             );
 
+
         if (used <= 0)
+        {
             break;
+        }
+
 
         text += used;
 
+
         while (*text == ' ')
+        {
             text++;
+        }
+
 
         count++;
     }
 
+
     return count;
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Convert character to lowercase.
+ * ------------------------------------------------------------
+ */
+
+char lower_char(
+    char c
+)
+{
+    if (
+        c >= 'A' &&
+        c <= 'Z'
+    )
+    {
+        return c + ('a' - 'A');
+    }
+
+
+    return c;
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Case-insensitive prefix comparison.
+ *
+ * Example:
+ *
+ * "pika" matches "Pikachu"
+ * "PIKA" matches "Pikachu"
+ * "Pik" matches "Pikachu"
+ * ------------------------------------------------------------
+ */
+
+int starts_with_ignore_case(
+    const char *text,
+    const char *search
+)
+{
+    int i;
+
+
+    i = 0;
+
+
+    while (search[i] != '\0')
+    {
+        if (text[i] == '\0')
+        {
+            return 0;
+        }
+
+
+        if (
+            lower_char(text[i]) !=
+            lower_char(search[i])
+        )
+        {
+            return 0;
+        }
+
+
+        i++;
+    }
+
+
+    return 1;
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Determine whether search string is numeric.
+ * ------------------------------------------------------------
+ */
+
+int is_number(
+    const char *text
+)
+{
+    int i;
+
+
+    if (text[0] == '\0')
+    {
+        return 0;
+    }
+
+
+    i = 0;
+
+
+    while (text[i] != '\0')
+    {
+        if (
+            text[i] < '0' ||
+            text[i] > '9'
+        )
+        {
+            return 0;
+        }
+
+
+        i++;
+    }
+
+
+    return 1;
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Convert numeric search to Pokemon index.
+ *
+ * 1   -> 0
+ * 25  -> 24
+ * 151 -> 150
+ * 251 -> 250
+ *
+ * Returns -1 if invalid.
+ * ------------------------------------------------------------
+ */
+
+int number_search(
+    const char *text
+)
+{
+    int number;
+    int i;
+
+
+    number = 0;
+    i = 0;
+
+
+    if (text[0] == '\0')
+    {
+        return -1;
+    }
+
+
+    while (text[i] != '\0')
+    {
+        /*
+         * Prevent absurdly large numbers from
+         * overflowing the integer.
+         */
+
+        if (number > 1000)
+        {
+            return -1;
+        }
+
+
+        number =
+            number * 10 +
+            (text[i] - '0');
+
+
+        i++;
+    }
+
+
+    if (
+        number < 1 ||
+        number > POKEMON_COUNT
+    )
+    {
+        return -1;
+    }
+
+
+    return number - 1;
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Add character to search string.
+ * ------------------------------------------------------------
+ */
+
+void add_search_char(
+    char *search,
+    int *length,
+    char c
+)
+{
+    if (
+        *length <
+        SEARCH_LENGTH - 1
+    )
+    {
+        search[*length] = c;
+
+        (*length)++;
+
+        search[*length] = '\0';
+    }
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Draw search screen.
+ * ------------------------------------------------------------
+ */
+
+void draw_search(
+    const char *search,
+    int selected,
+    int result_count,
+    int *results
+)
+{
+    char line[32];
+
+    int i;
+    int y;
+
+
+    clear_screen();
+
+
+    draw_header(
+        "POKEDEX SEARCH"
+    );
+
+
+    print_text(
+        0,
+        10,
+        "SEARCH:"
+    );
+
+
+    print_text(
+        42,
+        10,
+        search
+    );
+
+
+    /*
+     * Draw search results.
+     */
+
+    for (
+        i = 0;
+        i < result_count &&
+        i < SEARCH_RESULTS;
+        i++
+    )
+    {
+        y =
+            20 +
+            i * 7;
+
+
+        if (i == selected)
+        {
+            Bdisp_AreaReverseVRAM(
+                0,
+                y,
+                127,
+                y + 6
+            );
+        }
+
+
+        sprintf(
+            line,
+            "#%03d %s",
+            results[i] + 1,
+            pokemon[results[i]].name
+        );
+
+
+        print_text(
+            1,
+            y,
+            line
+        );
+    }
+
+
+    /*
+     * Display no-result message.
+     */
+
+    if (
+        search[0] != '\0' &&
+        result_count == 0
+    )
+    {
+        print_text(
+            0,
+            23,
+            "No Pokemon found"
+        );
+    }
+
+
+    /*
+     * Controls.
+     */
+
+    print_text(
+        0,
+        59,
+        "EXE Select EXIT Back"
+    );
+
+
+    Bdisp_PutDisp_DD();
+}
+
+
+/*
+ * ------------------------------------------------------------
+ * Search screen.
+ *
+ * Returns selected Pokemon index.
+ *
+ * Returns -1 if cancelled.
+ * ------------------------------------------------------------
+ */
+
+int search_screen(void)
+{
+    char search[SEARCH_LENGTH];
+
+    int length;
+
+    int results[SEARCH_RESULTS];
+
+    int result_count;
+
+    int selected;
+
+    int i;
+
+    int number_result;
+
+    unsigned int key;
+
+
+    search[0] = '\0';
+
+    length = 0;
+
+    result_count = 0;
+
+    selected = 0;
+
+
+    while (1)
+    {
+        /*
+         * ----------------------------------------------------
+         * Build search results.
+         * ----------------------------------------------------
+         */
+
+        result_count = 0;
+
+
+        if (search[0] != '\0')
+        {
+            /*
+             * Numeric search.
+             */
+
+            if (is_number(search))
+            {
+                number_result =
+                    number_search(search);
+
+
+                if (number_result >= 0)
+                {
+                    results[0] =
+                        number_result;
+
+                    result_count = 1;
+                }
+            }
+
+
+            /*
+             * Name search.
+             */
+
+            else
+            {
+                for (
+                    i = 0;
+                    i < POKEMON_COUNT;
+                    i++
+                )
+                {
+                    if (
+                        starts_with_ignore_case(
+                            pokemon[i].name,
+                            search
+                        )
+                    )
+                    {
+                        if (
+                            result_count <
+                            SEARCH_RESULTS
+                        )
+                        {
+                            results[result_count] =
+                                i;
+
+                            result_count++;
+                        }
+                    }
+
+
+                    if (
+                        result_count >=
+                        SEARCH_RESULTS
+                    )
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        /*
+         * Keep selected result valid.
+         */
+
+        if (result_count == 0)
+        {
+            selected = 0;
+        }
+        else
+        {
+            if (
+                selected >=
+                result_count
+            )
+            {
+                selected =
+                    result_count - 1;
+            }
+        }
+
+
+        /*
+         * Draw search screen.
+         */
+
+        draw_search(
+            search,
+            selected,
+            result_count,
+            results
+        );
+
+
+        /*
+         * Wait for key.
+         */
+
+        GetKey(
+            &key
+        );
+
+
+        /*
+         * ----------------------------------------------------
+         * Handle key.
+         * ----------------------------------------------------
+         */
+
+        switch (key)
+        {
+            /*
+             * Numbers.
+             */
+
+            case KEY_CHAR_0:
+                add_search_char(
+                    search,
+                    &length,
+                    '0'
+                );
+                break;
+
+
+            case KEY_CHAR_1:
+                add_search_char(
+                    search,
+                    &length,
+                    '1'
+                );
+                break;
+
+
+            case KEY_CHAR_2:
+                add_search_char(
+                    search,
+                    &length,
+                    '2'
+                );
+                break;
+
+
+            case KEY_CHAR_3:
+                add_search_char(
+                    search,
+                    &length,
+                    '3'
+                );
+                break;
+
+
+            case KEY_CHAR_4:
+                add_search_char(
+                    search,
+                    &length,
+                    '4'
+                );
+                break;
+
+
+            case KEY_CHAR_5:
+                add_search_char(
+                    search,
+                    &length,
+                    '5'
+                );
+                break;
+
+
+            case KEY_CHAR_6:
+                add_search_char(
+                    search,
+                    &length,
+                    '6'
+                );
+                break;
+
+
+            case KEY_CHAR_7:
+                add_search_char(
+                    search,
+                    &length,
+                    '7'
+                );
+                break;
+
+
+            case KEY_CHAR_8:
+                add_search_char(
+                    search,
+                    &length,
+                    '8'
+                );
+                break;
+
+
+            case KEY_CHAR_9:
+                add_search_char(
+                    search,
+                    &length,
+                    '9'
+                );
+                break;
+
+
+            /*
+             * Letters.
+             */
+
+            case KEY_CHAR_A:
+                add_search_char(search, &length, 'A');
+                break;
+
+            case KEY_CHAR_B:
+                add_search_char(search, &length, 'B');
+                break;
+
+            case KEY_CHAR_C:
+                add_search_char(search, &length, 'C');
+                break;
+
+            case KEY_CHAR_D:
+                add_search_char(search, &length, 'D');
+                break;
+
+            case KEY_CHAR_E:
+                add_search_char(search, &length, 'E');
+                break;
+
+            case KEY_CHAR_F:
+                add_search_char(search, &length, 'F');
+                break;
+
+            case KEY_CHAR_G:
+                add_search_char(search, &length, 'G');
+                break;
+
+            case KEY_CHAR_H:
+                add_search_char(search, &length, 'H');
+                break;
+
+            case KEY_CHAR_I:
+                add_search_char(search, &length, 'I');
+                break;
+
+            case KEY_CHAR_J:
+                add_search_char(search, &length, 'J');
+                break;
+
+            case KEY_CHAR_K:
+                add_search_char(search, &length, 'K');
+                break;
+
+            case KEY_CHAR_L:
+                add_search_char(search, &length, 'L');
+                break;
+
+            case KEY_CHAR_M:
+                add_search_char(search, &length, 'M');
+                break;
+
+            case KEY_CHAR_N:
+                add_search_char(search, &length, 'N');
+                break;
+
+            case KEY_CHAR_O:
+                add_search_char(search, &length, 'O');
+                break;
+
+            case KEY_CHAR_P:
+                add_search_char(search, &length, 'P');
+                break;
+
+            case KEY_CHAR_Q:
+                add_search_char(search, &length, 'Q');
+                break;
+
+            case KEY_CHAR_R:
+                add_search_char(search, &length, 'R');
+                break;
+
+            case KEY_CHAR_S:
+                add_search_char(search, &length, 'S');
+                break;
+
+            case KEY_CHAR_T:
+                add_search_char(search, &length, 'T');
+                break;
+
+            case KEY_CHAR_U:
+                add_search_char(search, &length, 'U');
+                break;
+
+            case KEY_CHAR_V:
+                add_search_char(search, &length, 'V');
+                break;
+
+            case KEY_CHAR_W:
+                add_search_char(search, &length, 'W');
+                break;
+
+            case KEY_CHAR_X:
+                add_search_char(search, &length, 'X');
+                break;
+
+            case KEY_CHAR_Y:
+                add_search_char(search, &length, 'Y');
+                break;
+
+            case KEY_CHAR_Z:
+                add_search_char(search, &length, 'Z');
+                break;
+
+
+            /*
+             * Delete last character.
+             */
+
+            case KEY_CTRL_DEL:
+
+                if (length > 0)
+                {
+                    length--;
+
+                    search[length] =
+                        '\0';
+                }
+
+                break;
+
+
+            /*
+             * Move selection up.
+             */
+
+            case KEY_CTRL_UP:
+
+                if (selected > 0)
+                {
+                    selected--;
+                }
+
+                break;
+
+
+            /*
+             * Move selection down.
+             */
+
+            case KEY_CTRL_DOWN:
+
+                if (
+                    result_count > 0 &&
+                    selected <
+                    result_count - 1
+                )
+                {
+                    selected++;
+                }
+
+                break;
+
+
+            /*
+             * Select result.
+             */
+
+            case KEY_CTRL_EXE:
+
+                if (result_count > 0)
+                {
+                    return results[selected];
+                }
+
+                break;
+
+
+            /*
+             * Cancel.
+             */
+
+            case KEY_CTRL_EXIT:
+
+                return -1;
+
+
+            default:
+
+                break;
+        }
+    }
 }
 
 
@@ -227,7 +1148,7 @@ static int count_lines(
  * ------------------------------------------------------------
  */
 
-static void draw_list(
+void draw_list(
     int selected
 )
 {
@@ -238,18 +1159,25 @@ static void draw_list(
 
     char line[32];
 
+
     /*
-     * Center selected Pokemon when possible.
+     * Center the selected Pokemon in the list.
      */
+
     first =
         selected - 2;
 
+
     if (first < 0)
+    {
         first = 0;
+    }
+
 
     if (
         first >
-        POKEMON_COUNT - VISIBLE_LIST
+        POKEMON_COUNT -
+        VISIBLE_LIST
     )
     {
         first =
@@ -257,22 +1185,34 @@ static void draw_list(
             VISIBLE_LIST;
     }
 
+
     if (first < 0)
+    {
         first = 0;
+    }
+
 
     clear_screen();
 
+
     draw_header(
-        "POKEDEX - GEN 1"
+        "POKEDEX - Generation 1 and 2"
     );
+
 
     /*
      * Draw five Pokemon.
      */
-    for (i = 0; i < VISIBLE_LIST; i++)
+
+    for (
+        i = 0;
+        i < VISIBLE_LIST;
+        i++
+    )
     {
         number =
             first + i;
+
 
         if (
             number >=
@@ -282,14 +1222,20 @@ static void draw_list(
             break;
         }
 
+
         y =
             9 +
             i * 10;
 
+
         /*
-         * Highlight selected entry.
+         * Highlight selected Pokemon.
          */
-        if (number == selected)
+
+        if (
+            number ==
+            selected
+        )
         {
             Bdisp_AreaReverseVRAM(
                 0,
@@ -299,14 +1245,17 @@ static void draw_list(
             );
         }
 
+
         /*
-         * Pokemon number.
+         * Draw number.
          */
+
         sprintf(
             line,
             "#%03d",
             number + 1
         );
+
 
         print_text(
             1,
@@ -314,9 +1263,11 @@ static void draw_list(
             line
         );
 
+
         /*
-         * Pokemon name.
+         * Draw name.
          */
+
         print_text(
             24,
             y,
@@ -324,14 +1275,17 @@ static void draw_list(
         );
     }
 
+
     /*
      * Controls.
      */
+
     print_text(
         0,
         59,
-        "UP/DN Browse EXE View"
+        "UP/DN Browse ALPHA Search"
     );
+
 
     Bdisp_PutDisp_DD();
 }
@@ -339,19 +1293,11 @@ static void draw_list(
 
 /*
  * ------------------------------------------------------------
- * Draw Pokemon details.
- *
- * Content consists of:
- *
- *   description
- *   EVOLVE:
- *   evolution
- *
- * The type information remains fixed.
+ * Draw Pokemon detail screen.
  * ------------------------------------------------------------
  */
 
-static int draw_detail(
+int draw_detail(
     int selected,
     int scroll
 )
@@ -370,21 +1316,40 @@ static int draw_detail(
 
 
     /*
-     * Count description and evolution lines.
+     * Get text.
      */
+
+    description =
+        pokemon[selected].description;
+
+    evolution =
+        pokemon[selected].evolution;
+
+
+    /*
+     * Count lines.
+     */
+
     description_lines =
         count_lines(
-            pokemon[selected].description
+            description
         );
+
 
     evolution_lines =
         count_lines(
-            pokemon[selected].evolution
+            evolution
         );
 
+
     /*
-     * One line is used for EVOLVE.
+     * Description lines
+     * +
+     * EVOLVE heading
+     * +
+     * evolution lines
      */
+
     total_lines =
         description_lines +
         1 +
@@ -392,38 +1357,40 @@ static int draw_detail(
 
 
     /*
-     * Clamp scrolling.
+     * Clamp scroll position.
      */
+
     if (scroll < 0)
-        scroll = 0;
-
-    if (total_lines <= DETAIL_LINES)
     {
         scroll = 0;
     }
-    else
+
+
+    if (
+        total_lines <=
+        DETAIL_LINES
+    )
     {
-        if (
-            scroll >
-            total_lines - DETAIL_LINES
-        )
-        {
-            scroll =
-                total_lines -
-                DETAIL_LINES;
-        }
+        scroll = 0;
+    }
+    else if (
+        scroll >
+        total_lines -
+        DETAIL_LINES
+    )
+    {
+        scroll =
+            total_lines -
+            DETAIL_LINES;
     }
 
 
-    /*
-     * Clear screen.
-     */
     clear_screen();
 
 
     /*
      * --------------------------------------------------------
-     * Header
+     * Header.
      * --------------------------------------------------------
      */
 
@@ -434,6 +1401,7 @@ static int draw_detail(
         pokemon[selected].name
     );
 
+
     draw_header(
         line
     );
@@ -441,7 +1409,7 @@ static int draw_detail(
 
     /*
      * --------------------------------------------------------
-     * Type
+     * Type 1.
      * --------------------------------------------------------
      */
 
@@ -451,11 +1419,19 @@ static int draw_detail(
         pokemon[selected].type1
     );
 
+
     print_text(
         0,
         10,
         line
     );
+
+
+    /*
+     * --------------------------------------------------------
+     * Type 2.
+     * --------------------------------------------------------
+     */
 
     if (
         pokemon[selected].type2[0] !=
@@ -468,6 +1444,7 @@ static int draw_detail(
             pokemon[selected].type2
         );
 
+
         print_text(
             0,
             17,
@@ -477,9 +1454,7 @@ static int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
-     * Set up text pointers.
-     * --------------------------------------------------------
+     * Reset pointers.
      */
 
     description =
@@ -491,19 +1466,18 @@ static int draw_detail(
 
     /*
      * --------------------------------------------------------
-     * Skip content until the requested scroll position.
+     * Skip lines according to scroll position.
      * --------------------------------------------------------
      */
 
     content_line = 0;
 
+
     while (
-        content_line < scroll
+        content_line <
+        scroll
     )
     {
-        /*
-         * Description lines.
-         */
         if (
             content_line <
             description_lines
@@ -514,23 +1488,17 @@ static int draw_detail(
                     description
                 );
         }
-
-        /*
-         * EVOLVE heading.
-         */
         else if (
             content_line ==
             description_lines
         )
         {
             /*
-             * Nothing to skip.
+             * EVOLVE heading.
+             *
+             * There is no text pointer to advance.
              */
         }
-
-        /*
-         * Evolution lines.
-         */
         else
         {
             evolution =
@@ -539,26 +1507,27 @@ static int draw_detail(
                 );
         }
 
+
         content_line++;
     }
 
 
     /*
      * --------------------------------------------------------
-     * Draw visible content.
+     * Draw visible lines.
      * --------------------------------------------------------
      */
 
     visible_line = 0;
 
+
     while (
-        visible_line < DETAIL_LINES &&
-        content_line < total_lines
+        visible_line <
+        DETAIL_LINES &&
+        content_line <
+        total_lines
     )
     {
-        /*
-         * Description.
-         */
         if (
             content_line <
             description_lines
@@ -572,10 +1541,6 @@ static int draw_detail(
                     visible_line * 7
                 );
         }
-
-        /*
-         * EVOLVE heading.
-         */
         else if (
             content_line ==
             description_lines
@@ -588,10 +1553,6 @@ static int draw_detail(
                 "EVOLVE:"
             );
         }
-
-        /*
-         * Evolution.
-         */
         else
         {
             evolution =
@@ -602,6 +1563,7 @@ static int draw_detail(
                     visible_line * 7
                 );
         }
+
 
         content_line++;
         visible_line++;
@@ -623,10 +1585,13 @@ static int draw_detail(
         );
     }
 
+
     if (
-        total_lines > DETAIL_LINES &&
+        total_lines >
+        DETAIL_LINES &&
         scroll <
-        total_lines - DETAIL_LINES
+        total_lines -
+        DETAIL_LINES
     )
     {
         print_text(
@@ -638,9 +1603,7 @@ static int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
      * Controls.
-     * --------------------------------------------------------
      */
 
     print_text(
@@ -650,10 +1613,8 @@ static int draw_detail(
     );
 
 
-    /*
-     * Send display to screen.
-     */
     Bdisp_PutDisp_DD();
+
 
     return total_lines;
 }
@@ -661,7 +1622,7 @@ static int draw_detail(
 
 /*
  * ------------------------------------------------------------
- * Main program
+ * Main program.
  * ------------------------------------------------------------
  */
 
@@ -679,19 +1640,29 @@ int AddIn_main(
     int scroll;
     int total_lines;
 
+    int search_result;
+
 
     /*
-     * Prevent unused parameter warnings.
+     * Avoid compiler warnings.
      */
+
     (void)isAppli;
     (void)OptionNum;
 
 
+    /*
+     * Initial state.
+     */
+
     selected = 0;
+
     detail = 0;
+
     running = 1;
 
     scroll = 0;
+
     total_lines = 0;
 
 
@@ -715,15 +1686,20 @@ int AddIn_main(
                 selected
             );
 
+
             GetKey(
                 &key
             );
 
+
             switch (key)
             {
                 /*
+                 * --------------------------------------------
                  * Move up.
+                 * --------------------------------------------
                  */
+
                 case KEY_CTRL_UP:
 
                     if (selected > 0)
@@ -735,8 +1711,11 @@ int AddIn_main(
 
 
                 /*
+                 * --------------------------------------------
                  * Move down.
+                 * --------------------------------------------
                  */
+
                 case KEY_CTRL_DOWN:
 
                     if (
@@ -751,19 +1730,49 @@ int AddIn_main(
 
 
                 /*
+                 * --------------------------------------------
                  * Open Pokemon.
+                 * --------------------------------------------
                  */
+
                 case KEY_CTRL_EXE:
 
                     detail = 1;
+
                     scroll = 0;
 
                     break;
 
 
                 /*
-                 * Exit.
+                 * --------------------------------------------
+                 * Open search.
+                 * --------------------------------------------
                  */
+
+                case KEY_CTRL_ALPHA:
+
+                    search_result =
+                        search_screen();
+
+
+                    if (
+                        search_result >= 0
+                    )
+                    {
+                        selected =
+                            search_result;
+                    }
+
+                    break;
+
+
+                /*
+                 * --------------------------------------------
+                 * Exit program.
+                 * --------------------------------------------
+                 */
+
                 case KEY_CTRL_EXIT:
 
                     running = 0;
@@ -792,15 +1801,20 @@ int AddIn_main(
                     scroll
                 );
 
+
             GetKey(
                 &key
             );
 
+
             switch (key)
             {
                 /*
+                 * --------------------------------------------
                  * Scroll up.
+                 * --------------------------------------------
                  */
+
                 case KEY_CTRL_UP:
 
                     if (scroll > 0)
@@ -812,8 +1826,11 @@ int AddIn_main(
 
 
                 /*
+                 * --------------------------------------------
                  * Scroll down.
+                 * --------------------------------------------
                  */
+
                 case KEY_CTRL_DOWN:
 
                     if (
@@ -835,11 +1852,15 @@ int AddIn_main(
 
 
                 /*
+                 * --------------------------------------------
                  * Return to list.
+                 * --------------------------------------------
                  */
+
                 case KEY_CTRL_EXIT:
 
                     detail = 0;
+
                     scroll = 0;
 
                     break;
@@ -854,14 +1875,13 @@ int AddIn_main(
 
 
     /*
-     * --------------------------------------------------------
      * Clear screen before exiting.
-     * --------------------------------------------------------
      */
 
     clear_screen();
 
     Bdisp_PutDisp_DD();
+
 
     return 1;
 }
