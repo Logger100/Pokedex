@@ -1,7 +1,7 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#define POKEMON_COUNT 251
+#define POKEMON_COUNT 386
 
 typedef struct
 {
@@ -986,6 +986,546 @@ static const Pokemon pokemon[POKEMON_COUNT] =
     {"Celebi","Psychic","Grass",
      "A Psychic and Grass type Mythical Pokemon that travels through time. It appears wherever forests are healthy and peaceful.",
      "Celebi"}
+	{"Treecko","Grass",
+	 "A Grass type Pokemon that grows by climbing trees. Its tail is strong enough to break thick branches.",
+	 "Treecko > Grovyle > Sceptile"},
+
+	{"Grovyle","Grass",
+	 "A Grass type Pokemon with leafy blades growing from its body. It moves quickly through dense forests.",
+	 "Treecko > Grovyle > Sceptile"},
+
+	{"Sceptile","Grass",
+	 "A Grass type Pokemon with leaves growing from its arms and seeds containing nutrients on its back.",
+	 "Treecko > Grovyle > Sceptile"},
+
+	{"Torchic","Fire",
+	 "A Fire type Pokemon that has a flame burning inside its body. It is warm to hold and produces fireballs.",
+	 "Torchic > Combusken > Blaziken"},
+
+	{"Combusken","Fire","Fighting",
+	 "A Fire and Fighting type Pokemon that trains its legs and can deliver powerful kicks.",
+	 "Torchic > Combusken > Blaziken"},
+
+	{"Blaziken","Fire","Fighting",
+	 "A Fire and Fighting type Pokemon with powerful legs. It can leap high and unleash fiery kicks.",
+	 "Torchic > Combusken > Blaziken"},
+
+	{"Mudkip","Water",
+	 "A Water type Pokemon with a fin on its head that senses movements in water and air.",
+	 "Mudkip > Marshtomp > Swampert"},
+
+	{"Marshtomp","Water","Ground",
+	 "A Water and Ground type Pokemon that can move easily through mud and muddy water.",
+	 "Mudkip > Marshtomp > Swampert"},
+
+	{"Swampert","Water","Ground",
+	 "A Water and Ground type Pokemon with incredible strength. It can easily drag large rocks and swim through rough seas.",
+	 "Mudkip > Marshtomp > Swampert"},
+
+	{"Poochyena","Dark",
+	 "A Dark type Pokemon with a strong sense of smell. It relentlessly chases prey once it begins pursuing it.",
+	 "Poochyena > Mightyena"},
+
+	{"Mightyena","Dark",
+	 "A Dark type Pokemon that follows the orders of its leader and can intimidate opponents with its fierce appearance.",
+	 "Poochyena > Mightyena"},
+
+	{"Zigzagoon","Normal",
+	 "A Normal type Pokemon that constantly wanders around while searching for food. Its fur has a distinctive zigzag pattern.",
+	 "Zigzagoon > Linoone"},
+
+	{"Linoone","Normal",
+	 "A Normal type Pokemon that can run extremely fast in straight lines but has difficulty making sharp turns.",
+	 "Zigzagoon > Linoone"},
+
+	{"Wurmple","Bug",
+	 "A Bug type Pokemon that uses the spikes on its body to defend itself from predators.",
+	 "Wurmple > Silcoon > Beautifly"},
+
+	{"Silcoon","Bug",
+	 "A Bug type Pokemon that protects itself inside a silk cocoon while preparing to evolve.",
+	 "Wurmple > Silcoon > Beautifly"},
+
+	{"Beautifly","Bug","Flying",
+	 "A Bug and Flying type Pokemon with colorful wings. It uses its long mouth to feed on flower nectar.",
+	 "Wurmple > Silcoon > Beautifly"},
+
+	{"Cascoon","Bug",
+	 "A Bug type Pokemon that stays inside a hard cocoon while its body develops before evolution.",
+	 "Wurmple > Cascoon > Dustox"},
+
+	{"Dustox","Bug","Poison",
+	 "A Bug and Poison type Pokemon that is attracted to bright lights and scatters poisonous dust from its wings.",
+	 "Wurmple > Cascoon > Dustox"},
+
+	{"Lotad","Water","Grass",
+	 "A Water and Grass type Pokemon that floats on ponds with a large leaf growing on its head.",
+	 "Lotad > Lombre > Ludicolo"},
+
+	{"Lombre","Water","Grass",
+	 "A Water and Grass type Pokemon that lives near water and enjoys playing tricks on people.",
+	 "Lotad > Lombre > Ludicolo"},
+
+	{"Ludicolo","Water","Grass",
+	 "A Water and Grass type Pokemon that becomes energetic when it hears festive music and dances with enthusiasm.",
+	 "Lotad > Lombre > Ludicolo"},
+
+	{"Seedot","Grass",
+	 "A Grass type Pokemon that looks like an acorn. It hangs from tree branches and absorbs nutrients.",
+	 "Seedot > Nuzleaf > Shiftry"},
+
+	{"Nuzleaf","Grass","Dark",
+	 "A Grass and Dark type Pokemon that lives in forests and can create a flute-like sound by blowing through a leaf.",
+	 "Seedot > Nuzleaf > Shiftry"},
+
+	{"Shiftry","Grass","Dark",
+	 "A Grass and Dark type Pokemon with large fan-like leaves that can create powerful gusts of wind.",
+	 "Seedot > Nuzleaf > Shiftry"},
+
+	{"Taillow","Normal","Flying",
+	 "A Normal and Flying type Pokemon that bravely challenges larger opponents despite its small size.",
+	 "Taillow > Swellow"},
+
+	{"Swellow","Normal","Flying",
+	 "A Normal and Flying type Pokemon that soars high above the ground and dives rapidly at its prey.",
+	 "Taillow > Swellow"},
+
+	{"Wingull","Water","Flying",
+	 "A Water and Flying type Pokemon that glides over oceans and coastal areas using its long wings.",
+	 "Wingull > Pelipper"},
+
+	{"Pelipper","Water","Flying",
+	 "A Water and Flying type Pokemon with a large bill that can carry small Pokemon and store food.",
+	 "Wingull > Pelipper"},
+
+	{"Ralts","Psychic","Fairy",
+	 "A Psychic and Fairy type Pokemon that senses the emotions of people and Pokemon around it.",
+	 "Ralts > Kirlia > Gardevoir"},
+
+	{"Kirlia","Psychic","Fairy",
+	 "A Psychic and Fairy type Pokemon that uses its psychic powers to distort space and create mysterious movements.",
+	 "Ralts > Kirlia > Gardevoir"},
+
+	{"Gardevoir","Psychic","Fairy",
+	 "A Psychic and Fairy type Pokemon that can create black holes and has the power to protect its Trainer.",
+	 "Ralts > Kirlia > Gardevoir"},
+
+	{"Surskit","Bug","Water",
+	 "A Bug and Water type Pokemon that skates across the surface of ponds using the liquid secreted from its feet.",
+	 "Surskit > Masquerain"},
+
+	{"Masquerain","Bug","Flying",
+	 "A Bug and Flying type Pokemon with wing patterns resembling large eyes that can intimidate predators.",
+	 "Surskit > Masquerain"},
+
+	{"Shroomish","Grass",
+	 "A Grass type Pokemon that lives in damp forests and releases spores when threatened.",
+	 "Shroomish > Breloom"},
+
+	{"Breloom","Grass","Fighting",
+	 "A Grass and Fighting type Pokemon with powerful arms. It uses its stretchy limbs to deliver fast punches.",
+	 "Shroomish > Breloom"},
+
+	{"Slakoth","Normal",
+	 "A Normal type Pokemon that spends most of its life lying down and moving as little as possible.",
+	 "Slakoth > Vigoroth > Slaking"},
+
+	{"Vigoroth","Normal",
+	 "A Normal type Pokemon that is constantly restless and must move around to remain calm.",
+	 "Slakoth > Vigoroth > Slaking"},
+
+	{"Slaking","Normal",
+	 "A Normal type Pokemon with tremendous strength that spends most of its time lying around and resting.",
+	 "Slakoth > Vigoroth > Slaking"},
+
+	{"Nincada","Bug","Ground",
+	 "A Bug and Ground type Pokemon that lives underground near tree roots and has very poor eyesight.",
+	 "Nincada > Ninjask / Shedinja"},
+
+	{"Ninjask","Bug","Flying",
+	 "A Bug and Flying type Pokemon that moves so quickly it is almost impossible to see with the naked eye.",
+	 "Nincada > Ninjask"},
+
+	{"Shedinja","Bug","Ghost",
+	 "A Bug and Ghost type Pokemon with a hollow body and a mysterious ability to appear after Nincada evolves.",
+	 "Nincada > Shedinja"},
+
+	{"Whismur","Normal",
+	 "A Normal type Pokemon that becomes louder when frightened and can produce extremely powerful cries.",
+	 "Whismur > Loudred > Exploud"},
+
+	{"Loudred","Normal",
+	 "A Normal type Pokemon that uses its ears like speakers and can produce powerful sound waves.",
+	 "Whismur > Loudred > Exploud"},
+
+	{"Exploud","Normal",
+	 "A Normal type Pokemon that uses openings throughout its body to amplify tremendous sounds.",
+	 "Whismur > Loudred > Exploud"},
+
+	{"Makuhita","Fighting",
+	 "A Fighting type Pokemon that trains constantly to become stronger and is known for its powerful slaps.",
+	 "Makuhita > Hariyama"},
+
+	{"Hariyama","Fighting",
+	 "A Fighting type Pokemon with enormous palms that can send opponents flying with powerful strikes.",
+	 "Makuhita > Hariyama"},
+
+	{"Azurill","Normal","Fairy",
+	 "A Normal and Fairy type Pokemon that uses its large tail like a rubber ball to bounce around.",
+	 "Azurill > Marill > Azumarill"},
+
+	{"Nosepass","Rock",
+	 "A Rock type Pokemon whose magnetic nose always points north. It is said to never move from its location.",
+	 "Nosepass"},
+
+	{"Skitty","Normal",
+	 "A Normal type Pokemon that loves playing with anything that moves and has a playful, curious nature.",
+	 "Skitty > Delcatty"},
+
+	{"Delcatty","Normal",
+	 "A Normal type Pokemon that prefers to live freely and does not like having its behavior controlled.",
+	 "Skitty > Delcatty"},
+
+	{"Sableye","Dark","Ghost",
+	 "A Dark and Ghost type Pokemon that lives in darkness and eats gemstones found in caves.",
+	 "Sableye"},
+
+	{"Mawile","Steel","Fairy",
+	 "A Steel and Fairy type Pokemon with a large set of jaws on the back of its head that it uses to surprise opponents.",
+	 "Mawile"},
+
+	{"Aron","Steel","Rock",
+	 "A Steel and Rock type Pokemon covered in hard metal armor. It eats iron ore to maintain its body.",
+	 "Aron > Lairon > Aggron"},
+
+	{"Lairon","Steel","Rock",
+	 "A Steel and Rock type Pokemon that eats iron ore and builds its sturdy body with metal-rich minerals.",
+	 "Aron > Lairon > Aggron"},
+
+	{"Aggron","Steel","Rock",
+	 "A Steel and Rock type Pokemon with a powerful armored body. It protects its territory and repairs damaged land.",
+	 "Aron > Lairon > Aggron"},
+
+	{"Meditite","Fighting","Psychic",
+	 "A Fighting and Psychic type Pokemon that trains through meditation to strengthen both its body and mind.",
+	 "Meditite > Medicham"},
+
+	{"Medicham","Fighting","Psychic",
+	 "A Fighting and Psychic type Pokemon that uses meditation to develop incredible focus and precise movements.",
+	 "Meditite > Medicham"},
+
+	{"Electrike","Electric",
+	 "An Electric type Pokemon that stores electricity in its muscles and releases it when it runs.",
+	 "Electrike > Manectric"},
+
+	{"Manectric","Electric",
+	 "An Electric type Pokemon that generates electricity and is often surrounded by electrical sparks.",
+	 "Electrike > Manectric"},
+
+	{"Plusle","Electric",
+	 "An Electric type Pokemon that cheers for its friends by creating sparks and energetic displays.",
+	 "Plusle"},
+
+	{"Minun","Electric",
+	 "An Electric type Pokemon that supports its friends by creating electricity and cheering them on.",
+	 "Minun"},
+
+	{"Volbeat","Bug",
+	 "A Bug type Pokemon that uses its glowing tail to create patterns of light while flying with Illumise.",
+	 "Volbeat"},
+
+	{"Illumise","Bug",
+	 "A Bug type Pokemon that creates beautiful patterns of light and uses its sweet scent to attract Volbeat.",
+	 "Illumise"},
+
+	{"Roselia","Grass","Poison",
+	 "A Grass and Poison type Pokemon with flowers on its hands. Its fragrance becomes stronger when it is healthy.",
+	 "Roselia"},
+
+	{"Gulpin","Poison",
+	 "A Poison type Pokemon that can swallow objects nearly as large as itself because of its elastic stomach.",
+	 "Gulpin > Swalot"},
+
+	{"Swalot","Poison",
+	 "A Poison type Pokemon with a huge stomach that can dissolve almost anything using powerful digestive fluids.",
+	 "Gulpin > Swalot"},
+
+	{"Carvanha","Water","Dark",
+	 "A Water and Dark type Pokemon with sharp fangs that attacks anything entering its territory.",
+	 "Carvanha > Sharpedo"},
+
+	{"Sharpedo","Water","Dark",
+	 "A Water and Dark type Pokemon known for its incredible speed and powerful bite. It is often called the bully of the sea.",
+	 "Carvanha > Sharpedo"},
+
+	{"Wailmer","Water",
+	 "A Water type Pokemon that resembles a round whale. It stores water in its body and can bounce on land.",
+	 "Wailmer > Wailord"},
+
+	{"Wailord","Water",
+	 "A Water type Pokemon that is enormous in size. It can dive deeply into the ocean while searching for food.",
+	 "Wailmer > Wailord"},
+
+	{"Numel","Fire","Ground",
+	 "A Fire and Ground type Pokemon with a volcano-like body. Its body temperature is extremely high.",
+	 "Numel > Camerupt"},
+
+	{"Camerupt","Fire","Ground",
+	 "A Fire and Ground type Pokemon with volcanoes on its back that erupt when it becomes angry.",
+	 "Numel > Camerupt"},
+
+	{"Torkoal","Fire",
+	 "A Fire type Pokemon that burns coal inside its shell and releases smoke through the openings on its body.",
+	 "Torkoal"},
+
+	{"Spoink","Psychic",
+	 "A Psychic type Pokemon that constantly bounces on its spring-like tail. It wears a pearl on its head.",
+	 "Spoink > Grumpig"},
+
+	{"Grumpig","Psychic",
+	 "A Psychic type Pokemon that uses pearls to amplify its psychic abilities and control opponents.",
+	 "Spoink > Grumpig"},
+
+	{"Spinda","Normal",
+	 "A Normal type Pokemon with unique spot patterns. Every Spinda has a different arrangement of spots.",
+	 "Spinda"},
+
+	{"Trapinch","Ground",
+	 "A Ground type Pokemon that digs large pits in the desert and uses its powerful jaws to catch prey.",
+	 "Trapinch > Vibrava > Flygon"},
+
+	{"Vibrava","Ground","Dragon",
+	 "A Ground and Dragon type Pokemon that vibrates its wings to produce ultrasonic waves.",
+	 "Trapinch > Vibrava > Flygon"},
+
+	{"Flygon","Ground","Dragon",
+	 "A Ground and Dragon type Pokemon that flies through deserts while creating sandstorms with its wings.",
+	 "Trapinch > Vibrava > Flygon"},
+
+	{"Cacnea","Grass",
+	 "A Grass type Pokemon that lives in deserts and stores water inside its body to survive dry conditions.",
+	 "Cacnea > Cacturne"},
+
+	{"Cacturne","Grass","Dark",
+	 "A Grass and Dark type Pokemon that wanders deserts at night and stalks travelers through the darkness.",
+	 "Cacnea > Cacturne"},
+
+	{"Swablu","Normal","Flying",
+	 "A Normal and Flying type Pokemon covered in fluffy cloud-like feathers. It loves cleaning dirty places.",
+	 "Swablu > Altaria"},
+
+	{"Altaria","Dragon","Flying",
+	 "A Dragon and Flying type Pokemon that has cloud-like wings and sings beautiful melodies while flying.",
+	 "Swablu > Altaria"},
+
+	{"Zangoose","Normal",
+	 "A Normal type Pokemon with sharp claws that has a long-standing rivalry with Seviper.",
+	 "Zangoose"},
+
+	{"Seviper","Poison",
+	 "A Poison type Pokemon with a blade-like tail and a venomous body. It has a fierce rivalry with Zangoose.",
+	 "Seviper"},
+
+	{"Lunatone","Rock","Psychic",
+	 "A Rock and Psychic type Pokemon shaped like a crescent moon. Its power is said to increase under moonlight.",
+	 "Lunatone"},
+
+	{"Solrock","Rock","Psychic",
+	 "A Rock and Psychic type Pokemon shaped like the sun. It absorbs solar energy and can unleash powerful attacks.",
+	 "Solrock"},
+
+	{"Barboach","Water","Ground",
+	 "A Water and Ground type Pokemon that lives in muddy water and uses its whiskers to sense its surroundings.",
+	 "Barboach > Whiscash"},
+
+	{"Whiscash","Water","Ground",
+	 "A Water and Ground type Pokemon that can sense earthquakes and causes vibrations by thrashing its body.",
+	 "Barboach > Whiscash"},
+
+	{"Corphish","Water",
+	 "A Water type Pokemon with strong pincers that can live in polluted water and adapt to many environments.",
+	 "Corphish > Crawdaunt"},
+
+	{"Crawdaunt","Water","Dark",
+	 "A Water and Dark type Pokemon with powerful pincers that is highly territorial and aggressive.",
+	 "Corphish > Crawdaunt"},
+
+	{"Baltoy","Ground","Psychic",
+	 "A Ground and Psychic type Pokemon that spins on one foot and communicates with others through mysterious sounds.",
+	 "Baltoy > Claydol"},
+
+	{"Claydol","Ground","Psychic",
+	 "A Ground and Psychic type Pokemon resembling an ancient clay figure that floats and fires beams from its body.",
+	 "Baltoy > Claydol"},
+
+	{"Lileep","Rock","Grass",
+	 "A Rock and Grass type Pokemon that lived in ancient seas and used its tentacles to catch prey.",
+	 "Lileep > Cradily"},
+
+	{"Cradily","Rock","Grass",
+	 "A Rock and Grass type Pokemon that anchored itself to the ocean floor with roots and tentacles.",
+	 "Lileep > Cradily"},
+
+	{"Anorith","Rock","Bug",
+	 "A Rock and Bug type Pokemon based on an ancient sea creature. It uses its claws to catch prey.",
+	 "Anorith > Armaldo"},
+
+	{"Armaldo","Rock","Bug",
+	 "A Rock and Bug type Pokemon covered in tough armor. Its powerful claws can crush even hard objects.",
+	 "Anorith > Armaldo"},
+
+	{"Feebas","Water",
+	 "A Water type Pokemon with a shabby appearance that is often found in only a few locations within large bodies of water.",
+	 "Feebas > Milotic"},
+
+	{"Milotic","Water",
+	 "A Water type Pokemon known for its extraordinary beauty. It can calm angry emotions and soothe people.",
+	 "Feebas > Milotic"},
+
+	{"Castform","Normal",
+	 "A Normal type Pokemon whose body changes shape and type depending on the weather around it.",
+	 "Castform"},
+
+	{"Kecleon","Normal",
+	 "A Normal type Pokemon that can change its body color to blend into its surroundings, except for its zigzag stripe.",
+	 "Kecleon"},
+
+	{"Shuppet","Ghost",
+	 "A Ghost type Pokemon attracted to feelings of jealousy and resentment. It can grow stronger by absorbing negative emotions.",
+	 "Shuppet > Banette"},
+
+	{"Banette","Ghost",
+	 "A Ghost type Pokemon that resembles a cursed doll. It is said to seek revenge on the person who abandoned it.",
+	 "Shuppet > Banette"},
+
+	{"Duskull","Ghost",
+	 "A Ghost type Pokemon that wanders through darkness and can pass through walls.",
+	 "Duskull > Dusclops"},
+
+	{"Dusclops","Ghost",
+	 "A Ghost type Pokemon with a hollow body that can absorb anything into itself without ever being filled.",
+	 "Duskull > Dusclops"},
+
+	{"Tropius","Grass","Flying",
+	 "A Grass and Flying type Pokemon with banana-like fruit growing around its neck. It loves tropical fruit.",
+	 "Tropius"},
+
+	{"Chimecho","Psychic",
+	 "A Psychic type Pokemon that uses its long tail to create ringing sounds carried by the wind.",
+	 "Chimecho"},
+
+	{"Absol","Dark",
+	 "A Dark type Pokemon with a curved horn that can sense approaching disasters and has a reputation for bringing bad luck.",
+	 "Absol"},
+
+	{"Wynaut","Psychic",
+	 "A Psychic type Pokemon that enjoys playing with others and grows stronger when it endures attacks.",
+	 "Wynaut > Wobbuffet"},
+
+	{"Snorunt","Ice",
+	 "An Ice type Pokemon that lives in snowy regions and is said to bring good fortune to homes it visits.",
+	 "Snorunt > Glalie / Froslass"},
+
+	{"Glalie","Ice",
+	 "An Ice type Pokemon that can freeze moisture in the air and create ice armor around its body.",
+	 "Snorunt > Glalie"},
+
+	{"Spheal","Ice","Water",
+	 "An Ice and Water type Pokemon that rolls around instead of walking and enjoys playing in groups.",
+	 "Spheal > Sealeo > Walrein"},
+
+	{"Sealeo","Ice","Water",
+	 "An Ice and Water type Pokemon that uses its sensitive nose to investigate objects and balance them on its nose.",
+	 "Spheal > Sealeo > Walrein"},
+
+	{"Walrein","Ice","Water",
+	 "An Ice and Water type Pokemon covered in thick blubber and powerful tusks that protect it from the cold.",
+	 "Spheal > Sealeo > Walrein"},
+
+	{"Clamperl","Water",
+	 "A Water type Pokemon that lives inside a sturdy shell and produces a valuable pearl as it grows.",
+	 "Clamperl > Huntail / Gorebyss"},
+
+	{"Huntail","Water",
+	 "A Water type Pokemon with a long, eel-like body that lives deep in the ocean and uses its tail to attract prey.",
+	 "Clamperl > Huntail"},
+
+	{"Gorebyss","Water",
+	 "A Water type Pokemon with a slender pink body that lives in deep seas and uses its long mouth to feed.",
+	 "Clamperl > Gorebyss"},
+
+	{"Relicanth","Water","Rock",
+	 "A Water and Rock type Pokemon that has remained nearly unchanged for millions of years.",
+	 "Relicanth"},
+
+	{"Luvdisc","Water",
+	 "A Water type Pokemon shaped like a heart. It is often associated with couples and romance.",
+	 "Luvdisc"},
+
+	{"Bagon","Dragon",
+	 "A Dragon type Pokemon that dreams of flying and repeatedly jumps from cliffs despite being unable to fly.",
+	 "Bagon > Shelgon > Salamence"},
+
+	{"Shelgon","Dragon",
+	 "A Dragon type Pokemon that hides inside a hard shell while preparing for its final evolution.",
+	 "Bagon > Shelgon > Salamence"},
+
+	{"Salamence","Dragon","Flying",
+	 "A Dragon and Flying type Pokemon that finally gains wings and flies freely after years of dreaming about flight.",
+	 "Bagon > Shelgon > Salamence"},
+
+	{"Beldum","Steel","Psychic",
+	 "A Steel and Psychic type Pokemon that communicates through magnetic pulses and often moves as part of a group.",
+	 "Beldum > Metang > Metagross"},
+
+	{"Metang","Steel","Psychic",
+	 "A Steel and Psychic type Pokemon formed from two Beldum. Its magnetic power lets it float through the air.",
+	 "Beldum > Metang > Metagross"},
+
+	{"Metagross","Steel","Psychic",
+	 "A Steel and Psychic type Pokemon formed from four Beldum. Its incredible intelligence and strength make it a powerful battler.",
+	 "Beldum > Metang > Metagross"},
+
+	{"Regirock","Rock",
+	 "A Rock type Legendary Pokemon made entirely of rocks. Its body can repair itself by absorbing new stones.",
+	 "Regirock"},
+
+	{"Regice","Ice",
+	 "An Ice type Legendary Pokemon whose body is made of ancient ice. It can survive extremely cold temperatures.",
+	 "Regice"},
+
+	{"Registeel","Steel",
+	 "A Steel type Legendary Pokemon with an incredibly hard body. Its true composition is mysterious.",
+	 "Registeel"},
+
+	{"Latias","Dragon","Psychic",
+	 "A Dragon and Psychic type Legendary Pokemon that can understand human speech and become invisible by bending light.",
+	 "Latias"},
+
+	{"Latios","Dragon","Psychic",
+	 "A Dragon and Psychic type Legendary Pokemon that can fly at incredible speeds and understand human speech.",
+	 "Latios"},
+
+	{"Kyogre","Water",
+	 "A Water type Legendary Pokemon said to have expanded the seas. It can summon powerful rainstorms.",
+	 "Kyogre"},
+
+	{"Groudon","Ground",
+	 "A Ground type Legendary Pokemon said to have expanded the land. It can summon intense sunlight and drought.",
+	 "Groudon"},
+
+	{"Rayquaza","Dragon","Flying",
+	 "A Dragon and Flying type Legendary Pokemon that lives high in the atmosphere and can calm the conflict between Kyogre and Groudon.",
+	 "Rayquaza"},
+
+	{"Jirachi","Steel","Psychic",
+	 "A Steel and Psychic type Mythical Pokemon that is said to awaken for only a short time and grant wishes written on its tags.",
+	 "Jirachi"},
+
+	{"Deoxys","Psychic",
+	 "A Psychic type Mythical Pokemon created from a space virus. It can change its form to adapt to different situations.",
+	 "Deoxys"}
+};
 
 };
 #endif
