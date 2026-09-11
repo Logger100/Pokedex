@@ -1196,7 +1196,7 @@ void draw_list(
 
 
     draw_header(
-        "POKEDEX - Generation 1-3"
+        "POKEDEX - Generation 1-2.5"
     );
 
 
