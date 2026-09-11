@@ -1,7 +1,7 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#define POKEMON_COUNT 386
+#define POKEMON_COUNT 269
 
 typedef struct
 {
