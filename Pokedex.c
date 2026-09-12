@@ -170,11 +170,6 @@ int make_line(
     }
 
 
-    /*
-     * If the line is too long, break at the last
-     * available space.
-     */
-
     if (
         text[length] != '\0' &&
         last_space > 0
@@ -183,10 +178,6 @@ int make_line(
         length = last_space;
     }
 
-
-    /*
-     * Handle extremely long words.
-     */
 
     if (length == 0)
     {
@@ -400,12 +391,6 @@ char lower_char(
 /*
  * ------------------------------------------------------------
  * Case-insensitive prefix comparison.
- *
- * Example:
- *
- * "pika" matches "Pikachu"
- * "PIKA" matches "Pikachu"
- * "Pik" matches "Pikachu"
  * ------------------------------------------------------------
  */
 
@@ -493,9 +478,9 @@ int is_number(
  * 1   -> 0
  * 25  -> 24
  * 151 -> 150
- * 251 -> 250
- *
- * Returns -1 if invalid.
+ * 269 -> 268
+ * 270 -> 269
+ * 386 -> 385
  * ------------------------------------------------------------
  */
 
@@ -519,11 +504,6 @@ int number_search(
 
     while (text[i] != '\0')
     {
-        /*
-         * Prevent absurdly large numbers from
-         * overflowing the integer.
-         */
-
         if (number > 1000)
         {
             return -1;
@@ -619,10 +599,6 @@ void draw_search(
     );
 
 
-    /*
-     * Draw search results.
-     */
-
     for (
         i = 0;
         i < result_count &&
@@ -662,10 +638,6 @@ void draw_search(
     }
 
 
-    /*
-     * Display no-result message.
-     */
-
     if (
         search[0] != '\0' &&
         result_count == 0
@@ -678,10 +650,6 @@ void draw_search(
         );
     }
 
-
-    /*
-     * Controls.
-     */
 
     print_text(
         0,
@@ -697,10 +665,6 @@ void draw_search(
 /*
  * ------------------------------------------------------------
  * Search screen.
- *
- * Returns selected Pokemon index.
- *
- * Returns -1 if cancelled.
  * ------------------------------------------------------------
  */
 
@@ -709,15 +673,10 @@ int search_screen(void)
     char search[SEARCH_LENGTH];
 
     int length;
-
     int results[SEARCH_RESULTS];
-
     int result_count;
-
     int selected;
-
     int i;
-
     int number_result;
 
     unsigned int key;
@@ -734,21 +693,15 @@ int search_screen(void)
 
     while (1)
     {
-        /*
-         * ----------------------------------------------------
-         * Build search results.
-         * ----------------------------------------------------
-         */
-
         result_count = 0;
 
 
+        /*
+         * Numeric search.
+         */
+
         if (search[0] != '\0')
         {
-            /*
-             * Numeric search.
-             */
-
             if (is_number(search))
             {
                 number_result =
@@ -810,29 +763,22 @@ int search_screen(void)
 
 
         /*
-         * Keep selected result valid.
+         * Keep selection valid.
          */
 
         if (result_count == 0)
         {
             selected = 0;
         }
-        else
+        else if (
+            selected >=
+            result_count
+        )
         {
-            if (
-                selected >=
-                result_count
-            )
-            {
-                selected =
-                    result_count - 1;
-            }
+            selected =
+                result_count - 1;
         }
 
-
-        /*
-         * Draw search screen.
-         */
 
         draw_search(
             search,
@@ -842,27 +788,13 @@ int search_screen(void)
         );
 
 
-        /*
-         * Wait for key.
-         */
-
         GetKey(
             &key
         );
 
 
-        /*
-         * ----------------------------------------------------
-         * Handle key.
-         * ----------------------------------------------------
-         */
-
         switch (key)
         {
-            /*
-             * Numbers.
-             */
-
             case KEY_CHAR_0:
                 add_search_char(
                     search,
@@ -870,7 +802,6 @@ int search_screen(void)
                     '0'
                 );
                 break;
-
 
             case KEY_CHAR_1:
                 add_search_char(
@@ -880,7 +811,6 @@ int search_screen(void)
                 );
                 break;
 
-
             case KEY_CHAR_2:
                 add_search_char(
                     search,
@@ -888,7 +818,6 @@ int search_screen(void)
                     '2'
                 );
                 break;
-
 
             case KEY_CHAR_3:
                 add_search_char(
@@ -898,7 +827,6 @@ int search_screen(void)
                 );
                 break;
 
-
             case KEY_CHAR_4:
                 add_search_char(
                     search,
@@ -906,7 +834,6 @@ int search_screen(void)
                     '4'
                 );
                 break;
-
 
             case KEY_CHAR_5:
                 add_search_char(
@@ -916,7 +843,6 @@ int search_screen(void)
                 );
                 break;
 
-
             case KEY_CHAR_6:
                 add_search_char(
                     search,
@@ -924,7 +850,6 @@ int search_screen(void)
                     '6'
                 );
                 break;
-
 
             case KEY_CHAR_7:
                 add_search_char(
@@ -934,7 +859,6 @@ int search_screen(void)
                 );
                 break;
 
-
             case KEY_CHAR_8:
                 add_search_char(
                     search,
@@ -942,7 +866,6 @@ int search_screen(void)
                     '8'
                 );
                 break;
-
 
             case KEY_CHAR_9:
                 add_search_char(
@@ -952,10 +875,6 @@ int search_screen(void)
                 );
                 break;
 
-
-            /*
-             * Letters.
-             */
 
             case KEY_CHAR_A:
                 add_search_char(search, &length, 'A');
@@ -1062,10 +981,6 @@ int search_screen(void)
                 break;
 
 
-            /*
-             * Delete last character.
-             */
-
             case KEY_CTRL_DEL:
 
                 if (length > 0)
@@ -1079,10 +994,6 @@ int search_screen(void)
                 break;
 
 
-            /*
-             * Move selection up.
-             */
-
             case KEY_CTRL_UP:
 
                 if (selected > 0)
@@ -1092,10 +1003,6 @@ int search_screen(void)
 
                 break;
 
-
-            /*
-             * Move selection down.
-             */
 
             case KEY_CTRL_DOWN:
 
@@ -1111,10 +1018,6 @@ int search_screen(void)
                 break;
 
 
-            /*
-             * Select result.
-             */
-
             case KEY_CTRL_EXE:
 
                 if (result_count > 0)
@@ -1124,10 +1027,6 @@ int search_screen(void)
 
                 break;
 
-
-            /*
-             * Cancel.
-             */
 
             case KEY_CTRL_EXIT:
 
@@ -1161,7 +1060,24 @@ void draw_list(
 
 
     /*
-     * Center the selected Pokemon in the list.
+     * Make sure selected is valid.
+     */
+
+    if (selected < 0)
+    {
+        selected = 0;
+    }
+
+
+    if (selected >= POKEMON_COUNT)
+    {
+        selected =
+            POKEMON_COUNT - 1;
+    }
+
+
+    /*
+     * Put selected Pokemon near the middle.
      */
 
     first =
@@ -1176,13 +1092,11 @@ void draw_list(
 
     if (
         first >
-        POKEMON_COUNT -
-        VISIBLE_LIST
+        POKEMON_COUNT - VISIBLE_LIST
     )
     {
         first =
-            POKEMON_COUNT -
-            VISIBLE_LIST;
+            POKEMON_COUNT - VISIBLE_LIST;
     }
 
 
@@ -1196,7 +1110,7 @@ void draw_list(
 
 
     draw_header(
-        "POKEDEX - Generation 1-2.5"
+        "POKEDEX - Generation 1-3"
     );
 
 
@@ -1247,7 +1161,12 @@ void draw_list(
 
 
         /*
-         * Draw number.
+         * Number.
+
+         * Array index 0 = #001
+         * Array index 268 = #269
+         * Array index 269 = #270
+         * Array index 385 = #386
          */
 
         sprintf(
@@ -1265,7 +1184,7 @@ void draw_list(
 
 
         /*
-         * Draw name.
+         * Name.
          */
 
         print_text(
@@ -1275,10 +1194,6 @@ void draw_list(
         );
     }
 
-
-    /*
-     * Controls.
-     */
 
     print_text(
         0,
@@ -1316,7 +1231,24 @@ int draw_detail(
 
 
     /*
-     * Get text.
+     * Safety check.
+     */
+
+    if (selected < 0)
+    {
+        selected = 0;
+    }
+
+
+    if (selected >= POKEMON_COUNT)
+    {
+        selected =
+            POKEMON_COUNT - 1;
+    }
+
+
+    /*
+     * Get Pokemon text.
      */
 
     description =
@@ -1327,7 +1259,7 @@ int draw_detail(
 
 
     /*
-     * Count lines.
+     * Count wrapped lines.
      */
 
     description_lines =
@@ -1342,14 +1274,6 @@ int draw_detail(
         );
 
 
-    /*
-     * Description lines
-     * +
-     * EVOLVE heading
-     * +
-     * evolution lines
-     */
-
     total_lines =
         description_lines +
         1 +
@@ -1357,7 +1281,8 @@ int draw_detail(
 
 
     /*
-     * Clamp scroll position.
+     * Clamp scroll.
+
      */
 
     if (scroll < 0)
@@ -1389,9 +1314,7 @@ int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
      * Header.
-     * --------------------------------------------------------
      */
 
     sprintf(
@@ -1408,9 +1331,7 @@ int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
      * Type 1.
-     * --------------------------------------------------------
      */
 
     sprintf(
@@ -1428,9 +1349,7 @@ int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
      * Type 2.
-     * --------------------------------------------------------
      */
 
     if (
@@ -1454,7 +1373,7 @@ int draw_detail(
 
 
     /*
-     * Reset pointers.
+     * Reset text pointers.
      */
 
     description =
@@ -1465,9 +1384,8 @@ int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
-     * Skip lines according to scroll position.
-     * --------------------------------------------------------
+     * Skip content according to scroll.
+
      */
 
     content_line = 0;
@@ -1495,8 +1413,6 @@ int draw_detail(
         {
             /*
              * EVOLVE heading.
-             *
-             * There is no text pointer to advance.
              */
         }
         else
@@ -1513,9 +1429,7 @@ int draw_detail(
 
 
     /*
-     * --------------------------------------------------------
-     * Draw visible lines.
-     * --------------------------------------------------------
+     * Draw visible content.
      */
 
     visible_line = 0;
@@ -1566,14 +1480,13 @@ int draw_detail(
 
 
         content_line++;
+
         visible_line++;
     }
 
 
     /*
-     * --------------------------------------------------------
      * Scroll indicators.
-     * --------------------------------------------------------
      */
 
     if (scroll > 0)
@@ -1653,6 +1566,13 @@ int AddIn_main(
 
     /*
      * Initial state.
+     *
+     * selected uses a zero-based array index.
+     *
+     * 0   = #001 Bulbasaur
+     * 268 = #269 Dustox
+     * 269 = #270 Lotad
+     * 385 = #386 Deoxys
      */
 
     selected = 0;
@@ -1667,9 +1587,7 @@ int AddIn_main(
 
 
     /*
-     * --------------------------------------------------------
      * Main loop.
-     * --------------------------------------------------------
      */
 
     while (running)
@@ -1695,9 +1613,7 @@ int AddIn_main(
             switch (key)
             {
                 /*
-                 * --------------------------------------------
                  * Move up.
-                 * --------------------------------------------
                  */
 
                 case KEY_CTRL_UP:
@@ -1711,9 +1627,7 @@ int AddIn_main(
 
 
                 /*
-                 * --------------------------------------------
                  * Move down.
-                 * --------------------------------------------
                  */
 
                 case KEY_CTRL_DOWN:
@@ -1730,9 +1644,8 @@ int AddIn_main(
 
 
                 /*
-                 * --------------------------------------------
-                 * Open Pokemon.
-                 * --------------------------------------------
+                 * Open detail.
+
                  */
 
                 case KEY_CTRL_EXE:
@@ -1745,9 +1658,8 @@ int AddIn_main(
 
 
                 /*
-                 * --------------------------------------------
-                 * Open search.
-                 * --------------------------------------------
+                 * Search.
+
                  */
 
                 case KEY_CTRL_ALPHA:
@@ -1768,9 +1680,8 @@ int AddIn_main(
 
 
                 /*
-                 * --------------------------------------------
-                 * Exit program.
-                 * --------------------------------------------
+                 * Exit.
+
                  */
 
                 case KEY_CTRL_EXIT:
@@ -1810,9 +1721,7 @@ int AddIn_main(
             switch (key)
             {
                 /*
-                 * --------------------------------------------
                  * Scroll up.
-                 * --------------------------------------------
                  */
 
                 case KEY_CTRL_UP:
@@ -1826,9 +1735,7 @@ int AddIn_main(
 
 
                 /*
-                 * --------------------------------------------
                  * Scroll down.
-                 * --------------------------------------------
                  */
 
                 case KEY_CTRL_DOWN:
@@ -1852,9 +1759,8 @@ int AddIn_main(
 
 
                 /*
-                 * --------------------------------------------
                  * Return to list.
-                 * --------------------------------------------
+
                  */
 
                 case KEY_CTRL_EXIT:
@@ -1876,6 +1782,7 @@ int AddIn_main(
 
     /*
      * Clear screen before exiting.
+
      */
 
     clear_screen();
