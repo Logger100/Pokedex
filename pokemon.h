@@ -1,7 +1,7 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#define POKEMON_COUNT 386
+#define POKEMON_COUNT 493
 
 typedef struct
 {
@@ -1408,6 +1408,294 @@ static const Pokemon pokemon[POKEMON_COUNT] =
     {"Deoxys","Psychic","",
          "A Psychic type Pokemon created when a space virus mutated after being exposed to extraterrestrial energy. It possesses incredible psychic abilities.",
          "Deoxys"},
+        {"Turtwig","Grass","","A small turtle Pokemon with a shell made from soil.",
+     "Turtwig > Grotle > Torterra"},
+    {"Grotle","Grass","","A turtle Pokemon with a large tree growing from its back.",
+     "Turtwig > Grotle > Torterra"},
+    {"Torterra","Grass","Ground","A massive turtle Pokemon that carries an ecosystem on its shell.",
+     "Turtwig > Grotle > Torterra"},
+
+    {"Chimchar","Fire","","A playful chimp Pokemon with a flame burning on its rear.",
+     "Chimchar > Monferno > Infernape"},
+    {"Monferno","Fire","Fighting","A skilled monkey Pokemon that uses its flaming tail in battle.",
+     "Chimchar > Monferno > Infernape"},
+    {"Infernape","Fire","Fighting","A swift and powerful Pokemon that fights using flames and martial arts.",
+     "Chimchar > Monferno > Infernape"},
+
+    {"Piplup","Water","","A proud penguin Pokemon that dislikes accepting help from others.",
+     "Piplup > Prinplup > Empoleon"},
+    {"Prinplup","Water","","A penguin Pokemon that lives alone and uses its strong wings to battle.",
+     "Piplup > Prinplup > Empoleon"},
+    {"Empoleon","Water","Steel","A powerful penguin Pokemon with steel-like wings.",
+     "Piplup > Prinplup > Empoleon"},
+
+    {"Starly","Normal","Flying","A small bird Pokemon that travels in large flocks.",
+     "Starly > Staravia > Staraptor"},
+    {"Staravia","Normal","Flying","A territorial bird Pokemon that fiercely protects its flock.",
+     "Starly > Staravia > Staraptor"},
+    {"Staraptor","Normal","Flying","A powerful bird Pokemon known for its aggressive fighting style.",
+     "Starly > Staravia > Staraptor"},
+
+    {"Bidoof","Normal","","A common beaver Pokemon that is surprisingly adaptable.",
+     "Bidoof > Bibarel"},
+    {"Bibarel","Normal","Water","A beaver Pokemon that builds dams beside rivers.",
+     "Bidoof > Bibarel"},
+
+    {"Kricketot","Bug","","A small cricket Pokemon that produces sounds with its antennae.",
+     "Kricketot > Kricketune"},
+    {"Kricketune","Bug","","A cricket Pokemon that creates musical sounds by moving its arms.",
+     "Kricketot > Kricketune"},
+
+    {"Shinx","Electric","","A lion-like Pokemon whose body glows when electricity flows through it.",
+     "Shinx > Luxio > Luxray"},
+    {"Luxio","Electric","","A Pokemon that generates electricity through its paws.",
+     "Shinx > Luxio > Luxray"},
+    {"Luxray","Electric","","A powerful Pokemon whose eyes can see through solid objects.",
+     "Shinx > Luxio > Luxray"},
+
+    {"Budew","Grass","Poison","A young plant Pokemon whose flowers release pollen when they bloom.",
+     "Budew > Roselia > Roserade"},
+    {"Roserade","Grass","Poison","A graceful Pokemon that fights with poisonous bouquets.",
+     "Budew > Roselia > Roserade"},
+
+    {"Cranidos","Rock","","A prehistoric Pokemon with a powerful skull used for ramming.",
+     "Cranidos > Rampardos"},
+    {"Rampardos","Rock","","A powerful fossil Pokemon known for its incredibly strong head.",
+     "Cranidos > Rampardos"},
+
+    {"Shieldon","Rock","Steel","A prehistoric Pokemon protected by a hard shield-like face.",
+     "Shieldon > Bastiodon"},
+    {"Bastiodon","Rock","Steel","A heavily armored fossil Pokemon with a massive shield-like face.",
+     "Shieldon > Bastiodon"},
+
+    {"Burmy","Bug","","A small bagworm Pokemon that changes its cloak depending on its surroundings.",
+     "Burmy > Wormadam / Mothim"},
+    {"Wormadam","Bug","Grass","A female Pokemon that permanently keeps the cloak it formed as a Burmy.",
+     "Burmy > Wormadam"},
+    {"Mothim","Bug","Flying","A male Pokemon that flies at night in search of Burmy cloaks.",
+     "Burmy > Mothim"},
+
+    {"Combee","Bug","Flying","A tiny Pokemon that lives together in a colony of three.",
+     "Combee > Vespiquen"},
+    {"Vespiquen","Bug","Flying","A queen Pokemon that commands a colony of Combee.",
+     "Combee > Vespiquen"},
+
+    {"Pachirisu","Electric","","A cheerful squirrel Pokemon that stores electricity in its cheeks.",
+     "Pachirisu"},
+
+    {"Buizel","Water","","A playful weasel Pokemon with flotation sacs around its neck.",
+     "Buizel > Floatzel"},
+    {"Floatzel","Water","","A weasel Pokemon that uses its flotation sac to stay afloat.",
+     "Buizel > Floatzel"},
+
+    {"Cherubi","Grass","","A small cherry-like Pokemon whose second head is filled with nutrients.",
+     "Cherubi > Cherrim"},
+    {"Cherrim","Grass","","A flower Pokemon that changes form depending on sunlight.",
+     "Cherubi > Cherrim"},
+
+    {"Shellos","Water","","A sea slug Pokemon whose appearance varies depending on its environment.",
+     "Shellos > Gastrodon"},
+    {"Gastrodon","Water","Ground","A sea slug Pokemon that thrives along coasts and shallow waters.",
+     "Shellos > Gastrodon"},
+
+    {"Ambipom","Normal","","A playful Pokemon with two tails ending in large hands.",
+     "Aipom > Ambipom"},
+
+    {"Drifloon","Ghost","Flying","A balloon Pokemon that is said to carry away children.",
+     "Drifloon > Drifblim"},
+    {"Drifblim","Ghost","Flying","A large balloon Pokemon that drifts through the sky.",
+     "Drifloon > Drifblim"},
+
+    {"Buneary","Normal","","A rabbit Pokemon that stores surprising strength in its ears.",
+     "Buneary > Lopunny"},
+    {"Lopunny","Normal","","A graceful rabbit Pokemon with powerful legs.",
+     "Buneary > Lopunny"},
+
+    {"Mismagius","Ghost","","A mysterious Pokemon that chants strange spells.",
+     "Misdreavus > Mismagius"},
+
+    {"Honchkrow","Dark","Flying","A powerful crow Pokemon that leads groups of Murkrow.",
+     "Murkrow > Honchkrow"},
+
+    {"Glameow","Normal","","A cat Pokemon that is known for its graceful and fickle behavior.",
+     "Glameow > Purugly"},
+    {"Purugly","Normal","","A large cat Pokemon that makes its territory by marking trees.",
+     "Glameow > Purugly"},
+
+    {"Chingling","Psychic","","A bell-like Pokemon that produces high-pitched cries.",
+     "Chingling > Chimecho"},
+
+    {"Stunky","Poison","Dark","A skunk-like Pokemon that protects itself with a powerful foul odor.",
+     "Stunky > Skuntank"},
+    {"Skuntank","Poison","Dark","A skunk Pokemon that sprays a foul-smelling fluid from its tail.",
+     "Stunky > Skuntank"},
+
+    {"Bronzor","Steel","Psychic","A metallic Pokemon shaped like an ancient bronze mirror.",
+     "Bronzor > Bronzong"},
+    {"Bronzong","Steel","Psychic","A bell-like Pokemon associated with rain and ancient rituals.",
+     "Bronzor > Bronzong"},
+
+    {"Bonsly","Rock","","A baby Pokemon that imitates a crying tree by shedding water from its eyes.",
+     "Bonsly > Sudowoodo"},
+
+    {"Mime Jr.","Psychic","Fairy","A playful baby Pokemon that mimics the movements of others.",
+     "Mime Jr. > Mr. Mime"},
+
+    {"Happiny","Normal","","A baby Pokemon that carries a round stone resembling an egg.",
+     "Happiny > Chansey > Blissey"},
+
+    {"Chatot","Normal","Flying","A musical bird Pokemon capable of imitating human speech.",
+     "Chatot"},
+
+    {"Spiritomb","Ghost","Dark","A mysterious Pokemon formed from many spirits bound to an ancient keystone.",
+     "Spiritomb"},
+
+    {"Gible","Dragon","Ground","A small dragon Pokemon that lives in caves and bites anything nearby.",
+     "Gible > Gabite > Garchomp"},
+    {"Gabite","Dragon","Ground","A dragon Pokemon that burrows underground and collects shiny objects.",
+     "Gible > Gabite > Garchomp"},
+    {"Garchomp","Dragon","Ground","A powerful land shark Pokemon capable of incredible speeds.",
+     "Gible > Gabite > Garchomp"},
+
+    {"Munchlax","Normal","","A hungry baby Pokemon that stores food beneath its fur.",
+     "Munchlax > Snorlax"},
+
+    {"Riolu","Fighting","","A young Pokemon that can sense emotions through aura.",
+     "Riolu > Lucario"},
+    {"Lucario","Fighting","Steel","An aura-sensitive Pokemon capable of detecting the feelings of others.",
+     "Riolu > Lucario"},
+
+    {"Hippopotas","Ground","","A hippo Pokemon that lives in deserts and buries itself in sand.",
+     "Hippopotas > Hippowdon"},
+    {"Hippowdon","Ground","","A massive Pokemon that attacks by blasting sand from its body.",
+     "Hippopotas > Hippowdon"},
+
+    {"Skorupi","Poison","Bug","A scorpion Pokemon that uses its claws and poisonous tail.",
+     "Skorupi > Drapion"},
+    {"Drapion","Poison","Dark","A heavily armored scorpion Pokemon with powerful claws.",
+     "Skorupi > Drapion"},
+
+    {"Croagunk","Poison","Fighting","A poisonous frog Pokemon that uses toxins to weaken opponents.",
+     "Croagunk > Toxicroak"},
+    {"Toxicroak","Poison","Fighting","A poisonous frog Pokemon that attacks with venomous claws.",
+     "Croagunk > Toxicroak"},
+
+    {"Carnivine","Grass","","A carnivorous plant Pokemon that traps prey with its powerful jaws.",
+     "Carnivine"},
+
+    {"Finneon","Water","","A small fish Pokemon with colorful fins that resemble fluttering ribbons.",
+     "Finneon > Lumineon"},
+    {"Lumineon","Water","","A beautiful fish Pokemon that uses its glowing fins to attract prey.",
+     "Finneon > Lumineon"},
+
+    {"Mantyke","Water","Flying","A gentle baby Pokemon that swims alongside schools of Remoraid.",
+     "Mantyke > Mantine"},
+
+    {"Snover","Grass","Ice","A tree-like Pokemon that lives in snowy mountain regions.",
+     "Snover > Abomasnow"},
+    {"Abomasnow","Grass","Ice","A large snow-covered Pokemon that lives in icy forests.",
+     "Snover > Abomasnow"},
+
+    {"Weavile","Dark","Ice","A swift and cunning Pokemon that hunts in groups.",
+     "Sneasel > Weavile"},
+
+    {"Magnezone","Electric","Steel","A strange metallic Pokemon affected by powerful magnetic fields.",
+     "Magnemite > Magneton > Magnezone"},
+
+    {"Lickilicky","Normal","","A Pokemon with an enormous tongue capable of stretching surprisingly far.",
+     "Lickitung > Lickilicky"},
+
+    {"Rhyperior","Ground","Rock","A heavily armored Pokemon that can launch rocks from its arms.",
+     "Rhyhorn > Rhydon > Rhyperior"},
+
+    {"Tangrowth","Grass","","A vine-covered Pokemon whose long arms can entangle opponents.",
+     "Tangela > Tangrowth"},
+
+    {"Electivire","Electric","","A powerful electric Pokemon that stores electricity in its tails.",
+     "Elekid > Electabuzz > Electivire"},
+
+    {"Magmortar","Fire","","A fire Pokemon that launches powerful flames from its arms.",
+     "Magby > Magmar > Magmortar"},
+
+    {"Togekiss","Fairy","Flying","A peaceful Pokemon that rarely appears where conflict exists.",
+     "Togepi > Togetic > Togekiss"},
+
+    {"Yanmega","Bug","Flying","A powerful dragonfly Pokemon capable of carrying a person.",
+     "Yanma > Yanmega"},
+
+    {"Leafeon","Grass","","A fox-like Pokemon whose body produces a fresh plant-like aroma.",
+     "Eevee > Leafeon"},
+
+    {"Glaceon","Ice","","A fox-like Pokemon that can freeze its fur into ice.",
+     "Eevee > Glaceon"},
+
+    {"Gliscor","Ground","Flying","A nocturnal Pokemon that silently glides toward its prey.",
+     "Gligar > Gliscor"},
+
+    {"Mamoswine","Ice","Ground","A mammoth-like Pokemon protected by thick fur and powerful tusks.",
+     "Swinub > Piloswine > Mamoswine"},
+
+    {"Porygon-Z","Normal","","A digital Pokemon altered through experimental upgrades.",
+     "Porygon > Porygon2 > Porygon-Z"},
+
+    {"Gallade","Psychic","Fighting","A humanoid Pokemon that fights with blade-like arms.",
+     "Ralts > Kirlia > Gallade"},
+
+    {"Probopass","Rock","Steel","A magnetic Pokemon surrounded by three smaller units.",
+     "Nosepass > Probopass"},
+
+    {"Dusknoir","Ghost","","A powerful ghost Pokemon said to guide spirits to the afterlife.",
+     "Duskull > Dusclops > Dusknoir"},
+
+    {"Froslass","Ice","Ghost","A mysterious ice Pokemon resembling a woman in a frozen kimono.",
+     "Snorunt > Froslass"},
+
+    {"Rotom","Electric","Ghost","A mischievous electric ghost Pokemon that can possess appliances.",
+     "Rotom"},
+
+    {"Uxie","Psychic","","A legendary Pokemon associated with knowledge.",
+     "Uxie"},
+
+    {"Mesprit","Psychic","","A legendary Pokemon associated with emotion.",
+     "Mesprit"},
+
+    {"Azelf","Psychic","","A legendary Pokemon associated with willpower.",
+     "Azelf"},
+
+    {"Dialga","Steel","Dragon","A legendary Pokemon said to control the flow of time.",
+     "Dialga"},
+
+    {"Palkia","Water","Dragon","A legendary Pokemon said to control the dimensions of space.",
+     "Palkia"},
+
+    {"Heatran","Fire","Steel","A legendary Pokemon that dwells in volcanic caves.",
+     "Heatran"},
+
+    {"Regigigas","Normal","","A legendary Pokemon said to have moved continents.",
+     "Regigigas"},
+
+    {"Giratina","Ghost","Dragon","A legendary Pokemon associated with a mysterious distorted realm.",
+     "Giratina"},
+
+    {"Cresselia","Psychic","","A legendary Pokemon associated with dreams and the crescent moon.",
+     "Cresselia"},
+
+    {"Phione","Water","","A small sea Pokemon that drifts through warm oceans.",
+     "Phione"},
+
+    {"Manaphy","Water","","A mythical sea Pokemon known for forming strong bonds.",
+     "Manaphy"},
+
+    {"Darkrai","Dark","","A mythical Pokemon capable of inducing nightmares.",
+     "Darkrai"},
+
+    {"Shaymin","Grass","","A mythical Pokemon that absorbs pollutants and transforms them into nutrients.",
+     "Shaymin"},
+
+    {"Arceus","Normal","","A mythical Pokemon said to have shaped the universe.",
+     "Arceus"}
+
+
 
 
 
