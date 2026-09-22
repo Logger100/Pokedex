@@ -1,7 +1,7 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#define POKEMON_COUNT 493
+#define POKEMON_COUNT 649
 
 typedef struct
 {
@@ -1693,8 +1693,630 @@ static const Pokemon pokemon[POKEMON_COUNT] =
      "Shaymin"},
 
     {"Arceus","Normal","","A mythical Pokemon said to have shaped the universe.",
-     "Arceus"}
+     "Arceus"},
+    {"Victini","Psychic","Fire",
+     "A Mythical Psychic and Fire type Pokemon said to bring victory to trainers who befriend it. It stores unlimited energy within its body.",
+     "Victini"},
 
+    {"Snivy","Grass","",
+     "A Grass type Pokemon with a slender body and a leafy tail. It uses sunlight to stay energetic and moves gracefully.",
+     "Snivy > Servine > Serperior"},
+
+    {"Servine","Grass","",
+     "A Grass type Pokemon with a longer, more agile body. It moves quickly through dense vegetation while using its leafy tail to blend in.",
+     "Snivy > Servine > Serperior"},
+
+    {"Serperior","Grass","",
+     "A powerful Grass type Pokemon with an elegant serpentine body. It intimidates opponents with its regal appearance and powerful gaze.",
+     "Snivy > Servine > Serperior"},
+
+    {"Tepig","Fire","",
+     "A Fire type Pokemon resembling a small pig. It can avoid attacks by moving quickly and breathes fire through its nose.",
+     "Tepig > Pignite > Emboar"},
+
+    {"Pignite","Fire","Fighting",
+     "A Fire and Fighting type Pokemon with a larger body and powerful limbs. Its internal fire gives it great strength during battle.",
+     "Tepig > Pignite > Emboar"},
+
+    {"Emboar","Fire","Fighting",
+     "A powerful Fire and Fighting type Pokemon covered in flames. It combines immense physical strength with powerful fire attacks.",
+     "Tepig > Pignite > Emboar"},
+
+    {"Oshawott","Water","",
+     "A Water type Pokemon that carries a shell on its belly. It can use the shell as a weapon and as protection in battle.",
+     "Oshawott > Dewott > Samurott"},
+
+    {"Dewott","Water","",
+     "A Water type Pokemon that carries two shell blades. It trains constantly to master swift and precise sword-like attacks.",
+     "Oshawott > Dewott > Samurott"},
+
+    {"Samurott","Water","",
+     "A powerful Water type Pokemon inspired by a samurai. Its armor and blade-like weapons allow it to defeat opponents with powerful strikes.",
+     "Oshawott > Dewott > Samurott"},
+
+    {"Patrat","Normal","",
+     "A Normal type Pokemon that stands watch for danger. It uses its large eyes to carefully observe its surroundings.",
+     "Patrat > Watchog"},
+
+    {"Watchog","Normal","",
+     "A Normal type Pokemon that patrols its territory carefully. Its glowing markings and sharp eyes help it spot threats from far away.",
+     "Patrat > Watchog"},
+
+    {"Lillipup","Normal","",
+     "A small Normal type Pokemon resembling a puppy. It is intelligent, loyal, and capable of judging opponents before attacking.",
+     "Lillipup > Herdier > Stoutland"},
+
+    {"Herdier","Normal","",
+     "A Normal type Pokemon with thick fur that protects its body. It is loyal and dependable, often helping trainers and other Pokemon.",
+     "Lillipup > Herdier > Stoutland"},
+
+    {"Stoutland","Normal","",
+     "A powerful Normal type Pokemon with a large mustache and thick fur. It is known for its bravery and ability to rescue others.",
+     "Lillipup > Herdier > Stoutland"},
+
+    {"Purrloin","Dark","",
+     "A Dark type Pokemon that behaves playfully while secretly stealing objects. Its cute appearance helps it deceive unsuspecting targets.",
+     "Purrloin > Liepard"},
+
+    {"Liepard","Dark","",
+     "A sleek Dark type Pokemon that moves silently and attacks quickly. Its spotted body helps it remain difficult to notice in the wild.",
+     "Purrloin > Liepard"},
+
+    {"Pansage","Grass","",
+     "A Grass type Pokemon with a leaf growing from its head. It shares leaves with companions that are tired or lacking energy.",
+     "Pansage > Simisage"},
+
+    {"Simisage","Grass","",
+     "A Grass type Pokemon with a large leafy mane and powerful arms. It uses its leaves and tail during fierce battles.",
+     "Pansage > Simisage"},
+
+    {"Pansear","Fire","",
+     "A Fire type Pokemon with a flame-producing tuft of hair. The heat from its head can become extremely intense.",
+     "Pansear > Simisear"},
+
+    {"Simisear","Fire","",
+     "A Fire type Pokemon with flames around its head and tail. It stores food in its body and converts it into fiery energy.",
+     "Pansear > Simisear"},
+
+    {"Panpour","Water","",
+     "A Water type Pokemon with a fountain-like tuft of hair. It stores water in its head and can use it to help plants grow.",
+     "Panpour > Simipour"},
+
+    {"Simipour","Water","",
+     "A Water type Pokemon that stores water inside its body. It can spray powerful streams of water from its tail and head.",
+     "Panpour > Simipour"},
+
+    {"Munna","Psychic","",
+     "A Psychic type Pokemon that feeds on dreams. It releases mist containing dream images and can cause pleasant or frightening dreams.",
+     "Munna > Musharna"},
+
+    {"Musharna","Psychic","",
+     "A Psychic type Pokemon surrounded by dream mist. It absorbs dreams and releases them through the colorful smoke around its body.",
+     "Munna > Musharna"},
+
+    {"Pidove","Normal","Flying",
+     "A Normal and Flying type Pokemon that lives near people. It is friendly but can sometimes struggle to understand instructions.",
+     "Pidove > Tranquill > Unfezant"},
+
+    {"Tranquill","Normal","Flying",
+     "A Normal and Flying type Pokemon that can navigate accurately even over unfamiliar terrain. It has excellent control while flying.",
+     "Pidove > Tranquill > Unfezant"},
+
+    {"Unfezant","Normal","Flying",
+     "A powerful Normal and Flying type Pokemon with different appearances for males and females. It is an excellent and confident flyer.",
+     "Pidove > Tranquill > Unfezant"},
+
+    {"Blitzle","Electric","",
+     "An Electric type Pokemon resembling a zebra. Lightning energy flows through its body and powers its electric attacks.",
+     "Blitzle > Zebstrika"},
+
+    {"Zebstrika","Electric","",
+     "A fast Electric type Pokemon with a striped body. It can run at high speeds while generating powerful electricity.",
+     "Blitzle > Zebstrika"},
+
+    {"Roggenrola","Rock","",
+     "A Rock type Pokemon with a hard, round body. Its body contains an energy core that allows it to produce powerful vibrations.",
+     "Roggenrola > Boldore > Gigalith"},
+
+    {"Boldore","Rock","",
+     "A Rock type Pokemon covered in blue energy crystals. It contains enormous energy that can be released through its crystalline body.",
+     "Roggenrola > Boldore > Gigalith"},
+
+    {"Gigalith","Rock","",
+     "A powerful Rock type Pokemon with red crystals across its body. It can absorb sunlight and fire highly concentrated energy beams.",
+     "Roggenrola > Boldore > Gigalith"},
+
+    {"Woobat","Psychic","Flying",
+     "A Psychic and Flying type Pokemon resembling a small bat. Its nose has a heart-shaped mark and it uses ultrasonic waves to navigate.",
+     "Woobat > Swoobat"},
+
+    {"Swoobat","Psychic","Flying",
+     "A Psychic and Flying type Pokemon with a heart-shaped nose. Its powerful ultrasonic waves can create intense vibrations.",
+     "Woobat > Swoobat"},
+
+    {"Drilbur","Ground","",
+     "A Ground type Pokemon with powerful claws that allow it to burrow quickly underground. It can dig through hard soil with ease.",
+     "Drilbur > Excadrill"},
+
+    {"Excadrill","Ground","Steel",
+     "A Ground and Steel type Pokemon with drill-like claws and a powerful head crest. It can tunnel through the earth at tremendous speed.",
+     "Drilbur > Excadrill"},
+
+    {"Audino","Normal","",
+     "A Normal type Pokemon with highly sensitive ears. It can detect the condition of others by listening to their heartbeats.",
+     "Audino"},
+
+    {"Timburr","Fighting","",
+     "A Fighting type Pokemon that carries a wooden beam. It becomes stronger through physical training and enjoys showing its strength.",
+     "Timburr > Gurdurr > Conkeldurr"},
+
+    {"Gurdurr","Fighting","",
+     "A Fighting type Pokemon that carries a heavy steel beam. Its muscular body allows it to perform powerful physical attacks.",
+     "Timburr > Gurdurr > Conkeldurr"},
+
+    {"Conkeldurr","Fighting","",
+     "A powerful Fighting type Pokemon that uses concrete pillars as weapons. It can manipulate heavy objects with incredible strength.",
+     "Timburr > Gurdurr > Conkeldurr"},
+
+    {"Tympole","Water","",
+     "A Water type Pokemon that communicates through vibrations. It can produce sound waves that travel through water.",
+     "Tympole > Palpitoad > Seismitoad"},
+
+    {"Palpitoad","Water","Ground",
+     "A Water and Ground type Pokemon covered in vibration-producing bumps. It uses these vibrations to attack and communicate.",
+     "Tympole > Palpitoad > Seismitoad"},
+
+    {"Seismitoad","Water","Ground",
+     "A powerful Water and Ground type Pokemon that creates strong vibrations with the bumps on its body. Its attacks can shake the ground.",
+     "Tympole > Palpitoad > Seismitoad"},
+
+    {"Throh","Fighting","",
+     "A Fighting type Pokemon that wears a traditional belt. It trains constantly and becomes stronger by practicing powerful throwing techniques.",
+     "Throh"},
+
+    {"Sawk","Fighting","",
+     "A Fighting type Pokemon known for its disciplined martial arts training. Its powerful kicks and punches become stronger with practice.",
+     "Sawk"},
+
+    {"Sewaddle","Bug","Grass",
+     "A Bug and Grass type Pokemon that makes clothing from leaves. It uses silk to sew leaves together into protective garments.",
+     "Sewaddle > Swadloon > Leavanny"},
+
+    {"Swadloon","Bug","Grass",
+     "A Bug and Grass type Pokemon wrapped in a leafy covering. It spends much of its time hiding beneath leaves and caring for plants.",
+     "Sewaddle > Swadloon > Leavanny"},
+
+    {"Leavanny","Bug","Grass",
+     "A Bug and Grass type Pokemon that creates clothing from leaves. It is caring toward younger Pokemon and uses its sharp leaf-like arms in battle.",
+     "Sewaddle > Swadloon > Leavanny"},
+
+    {"Venipede","Bug","Poison",
+     "A Bug and Poison type Pokemon with a segmented body. It uses poisonous bites and moves quickly across the ground.",
+     "Venipede > Whirlipede > Scolipede"},
+
+    {"Whirlipede","Bug","Poison",
+     "A Bug and Poison type Pokemon with a hard, rounded body. It rolls rapidly toward opponents and can release powerful poison.",
+     "Venipede > Whirlipede > Scolipede"},
+
+    {"Scolipede","Bug","Poison",
+     "A powerful Bug and Poison type Pokemon resembling a large centipede. It moves quickly and attacks with poisonous horns.",
+     "Venipede > Whirlipede > Scolipede"},
+
+    {"Cottonee","Grass","Fairy",
+     "A Grass and Fairy type Pokemon made mostly of light cotton. Wind can carry it long distances as it drifts through the air.",
+     "Cottonee > Whimsicott"},
+
+    {"Whimsicott","Grass","Fairy",
+     "A Grass and Fairy type Pokemon with a fluffy cotton-like body. It can slip through small gaps and enjoys playing harmless tricks.",
+     "Cottonee > Whimsicott"},
+
+    {"Petilil","Grass","",
+     "A Grass type Pokemon with a plant-like body. It grows healthier when it receives plenty of sunlight and water.",
+     "Petilil > Lilligant"},
+
+    {"Lilligant","Grass","",
+     "A graceful Grass type Pokemon with a flower-like appearance. It is known for its elegant movements and beautiful floral scent.",
+     "Petilil > Lilligant"},
+
+    {"Basculin","Water","",
+     "A Water type Pokemon known for its aggressive behavior. Its sharp teeth and powerful swimming ability make it a dangerous predator.",
+     "Basculin"},
+
+    {"Sandile","Ground","Dark",
+     "A Ground and Dark type Pokemon that lives beneath desert sands. Only its eyes and nose may be visible while it waits for prey.",
+     "Sandile > Krokorok > Krookodile"},
+
+    {"Krokorok","Ground","Dark",
+     "A Ground and Dark type Pokemon with powerful jaws. It uses its keen sense of smell and excellent night vision to hunt.",
+     "Sandile > Krokorok > Krookodile"},
+
+    {"Krookodile","Ground","Dark",
+     "A powerful Ground and Dark type Pokemon resembling a large crocodile. Its enormous jaws and strong muscles make it a formidable opponent.",
+     "Sandile > Krokorok > Krookodile"},
+
+    {"Darumaka","Fire","",
+     "A Fire type Pokemon that keeps its internal flame burning to maintain its body temperature. It is energetic and constantly active.",
+     "Darumaka > Darmanitan"},
+
+    {"Darmanitan","Fire","",
+     "A powerful Fire type Pokemon with enormous physical strength. Its intense internal flames allow it to fight with incredible power.",
+     "Darumaka > Darmanitan"},
+
+    {"Maractus","Grass","",
+     "A Grass type Pokemon resembling a cactus. It uses rhythmic movements and sounds to communicate with others of its kind.",
+     "Maractus"},
+
+    {"Dwebble","Bug","Rock",
+     "A Bug and Rock type Pokemon that carries a rock shell for protection. It can repair or replace its shell when necessary.",
+     "Dwebble > Crustle"},
+
+    {"Crustle","Bug","Rock",
+     "A Bug and Rock type Pokemon that carries a large boulder on its back. It has powerful claws and can defend itself using its stone shell.",
+     "Dwebble > Crustle"},
+
+    {"Scraggy","Dark","Fighting",
+     "A Dark and Fighting type Pokemon with loose skin around its body. It pulls up its skin when it becomes ready to battle.",
+     "Scraggy > Scrafty"},
+
+    {"Scrafty","Dark","Fighting",
+     "A Dark and Fighting type Pokemon that wears its loose skin like clothing. It can deliver powerful kicks and is fiercely territorial.",
+     "Scraggy > Scrafty"},
+
+    {"Sigilyph","Psychic","Flying",
+     "A Psychic and Flying type Pokemon with an unusual geometric body. It has guarded ancient ruins for thousands of years.",
+     "Sigilyph"},
+
+    {"Yamask","Ghost","",
+     "A Ghost type Pokemon that carries a mask representing its former face. It sometimes looks at the mask and remembers its past life.",
+     "Yamask > Cofagrigus"},
+
+    {"Cofagrigus","Ghost","",
+     "A Ghost type Pokemon resembling an ancient sarcophagus. It can trap unsuspecting creatures inside its body and guards buried treasures.",
+     "Yamask > Cofagrigus"},
+
+    {"Tirtouga","Water","Rock",
+     "A Water and Rock type Pokemon based on an ancient sea turtle. Its powerful shell protects it while it swims through the ocean.",
+     "Tirtouga > Carracosta"},
+
+    {"Carracosta","Water","Rock",
+     "A powerful Water and Rock type Pokemon with an extremely hard shell. It can crush solid objects with its strong jaws.",
+     "Tirtouga > Carracosta"},
+
+    {"Archen","Rock","Flying",
+     "A Rock and Flying type Pokemon restored from an ancient fossil. It is believed to be an ancestor of many modern bird Pokemon.",
+     "Archen > Archeops"},
+
+    {"Archeops","Rock","Flying",
+     "A powerful Rock and Flying type Pokemon with strong wings and sharp claws. It could run quickly on land as well as fly.",
+     "Archen > Archeops"},
+
+    {"Trubbish","Poison","",
+     "A Poison type Pokemon formed from discarded waste. It produces toxic substances and can become dangerous when threatened.",
+     "Trubbish > Garbodor"},
+
+    {"Garbodor","Poison","",
+     "A Poison type Pokemon resembling a large pile of garbage. It attacks by firing poisonous waste and wrapping opponents in toxic materials.",
+     "Trubbish > Garbodor"},
+
+    {"Zorua","Dark","",
+     "A Dark type Pokemon that can transform into the appearance of other creatures. It uses illusions to protect itself and deceive others.",
+     "Zorua > Zoroark"},
+
+    {"Zoroark","Dark","",
+     "A powerful Dark type Pokemon capable of creating realistic illusions. It protects its companions by confusing anyone who threatens them.",
+     "Zorua > Zoroark"},
+
+    {"Minccino","Normal","",
+     "A Normal type Pokemon with soft fur that it constantly cleans. It uses its tail to sweep away dust and keep its surroundings tidy.",
+     "Minccino > Cinccino"},
+
+    {"Cinccino","Normal","",
+     "A Normal type Pokemon with extremely soft fur. Its fur naturally repels dirt and helps protect it from dust and moisture.",
+     "Minccino > Cinccino"},
+
+    {"Gothita","Psychic","",
+     "A Psychic type Pokemon that uses powerful psychic abilities. It is fascinated by objects that sparkle and can become very focused on them.",
+     "Gothita > Gothorita > Gothitelle"},
+
+    {"Gothorita","Psychic","",
+     "A Psychic type Pokemon that manipulates starlight and psychic energy. It can use its powers to confuse opponents and control objects.",
+     "Gothita > Gothorita > Gothitelle"},
+
+    {"Gothitelle","Psychic","",
+     "A powerful Psychic type Pokemon with extraordinary psychic abilities. It can use its powers to observe distant events and predict possible futures.",
+     "Gothita > Gothorita > Gothitelle"},
+
+    {"Solosis","Psychic","",
+     "A Psychic type Pokemon surrounded by a green protective fluid. It communicates telepathically and uses psychic energy to defend itself.",
+     "Solosis > Duosion > Reuniclus"},
+
+    {"Duosion","Psychic","",
+     "A Psychic type Pokemon with two separate minds within its body. The two minds can sometimes disagree while using powerful psychic attacks.",
+     "Solosis > Duosion > Reuniclus"},
+
+    {"Reuniclus","Psychic","",
+     "A powerful Psychic type Pokemon surrounded by green psychic fluid. Its separated arms can work together to unleash tremendous psychic strength.",
+     "Solosis > Duosion > Reuniclus"},
+
+    {"Ducklett","Water","Flying",
+     "A Water and Flying type Pokemon resembling a small duck. It swims well and can use its wings to fly short distances.",
+     "Ducklett > Swanna"},
+
+    {"Swanna","Water","Flying",
+     "A graceful Water and Flying type Pokemon resembling a swan. It is an excellent swimmer and flyer that moves elegantly across water.",
+     "Ducklett > Swanna"},
+
+    {"Vanillite","Ice","",
+     "An Ice type Pokemon resembling a small ice cream cone. It creates snow and ice by cooling the air around its body.",
+     "Vanillite > Vanillish > Vanilluxe"},
+
+    {"Vanillish","Ice","",
+     "An Ice type Pokemon with a larger frozen body. It can create snowstorms and lower the temperature around itself.",
+     "Vanillite > Vanillish > Vanilluxe"},
+
+    {"Vanilluxe","Ice","",
+     "A powerful Ice type Pokemon with two heads formed from frozen crystals. It can create powerful snowstorms and freezing winds.",
+     "Vanillite > Vanillish > Vanilluxe"},
+
+    {"Deerling","Normal","Grass",
+     "A Normal and Grass type Pokemon whose appearance changes with the seasons. It is closely connected to the changing environment.",
+     "Deerling > Sawsbuck"},
+
+    {"Sawsbuck","Normal","Grass",
+     "A Normal and Grass type Pokemon whose antlers and coloration change with the seasons. Its appearance reflects the time of year.",
+     "Deerling > Sawsbuck"},
+
+    {"Emolga","Electric","Flying",
+     "An Electric and Flying type Pokemon that stores electricity in its cheek pouches. It glides through the air using membranes on its body.",
+     "Emolga"},
+
+    {"Karrablast","Bug","",
+     "A Bug type Pokemon that has a strong rivalry with Shelmet. It can evolve when exposed to the energy created by their interaction.",
+     "Karrablast > Escavalier"},
+
+    {"Escavalier","Bug","Steel",
+     "A Bug and Steel type Pokemon that wears armor made from Shelmet's shell. It attacks with long, lance-like horns.",
+     "Karrablast > Escavalier"},
+
+    {"Foongus","Grass","Poison",
+     "A Grass and Poison type Pokemon that resembles a Pokeball. It uses its appearance to attract curious creatures before releasing poisonous spores.",
+     "Foongus > Amoonguss"},
+
+    {"Amoonguss","Grass","Poison",
+     "A Grass and Poison type Pokemon resembling a large Pokeball. It spreads poisonous spores and uses its mushroom-like body to attract others.",
+     "Foongus > Amoonguss"},
+
+    {"Frillish","Water","Ghost",
+     "A Water and Ghost type Pokemon with a jellyfish-like body. It uses its tentacles to immobilize prey and can drain their energy.",
+     "Frillish > Jellicent"},
+
+    {"Jellicent","Water","Ghost",
+     "A powerful Water and Ghost type Pokemon resembling a large jellyfish. It uses its tentacles and ghostly powers to capture prey.",
+     "Frillish > Jellicent"},
+
+    {"Alomomola","Water","",
+     "A Water type Pokemon with a heart-shaped body. It uses its fins to embrace injured Pokemon and help them recover.",
+     "Alomomola"},
+
+    {"Joltik","Bug","Electric",
+     "A tiny Bug and Electric type Pokemon that absorbs electricity from larger Pokemon. It is one of the smallest known Pokemon.",
+     "Joltik > Galvantula"},
+
+    {"Galvantula","Bug","Electric",
+     "A Bug and Electric type Pokemon resembling a large spider. It creates electrically charged webs to trap prey.",
+     "Joltik > Galvantula"},
+
+    {"Ferroseed","Grass","Steel",
+     "A Grass and Steel type Pokemon covered in sharp spikes. It absorbs minerals from rocks while growing underground.",
+     "Ferroseed > Ferrothorn"},
+
+    {"Ferrothorn","Grass","Steel",
+     "A powerful Grass and Steel type Pokemon covered in heavy spikes. It uses its vines and spines to attack opponents.",
+     "Ferroseed > Ferrothorn"},
+
+    {"Klink","Steel","",
+     "A Steel type Pokemon made of two interlocking gears. The gears rotate together and generate energy through their movement.",
+     "Klink > Klang > Klinklang"},
+
+    {"Klang","Steel","",
+     "A Steel type Pokemon with three interconnected gears. It can launch one of its gears at opponents as a powerful attack.",
+     "Klink > Klang > Klinklang"},
+
+    {"Klinklang","Steel","",
+     "A powerful Steel type Pokemon with multiple rotating gears. It uses its gears to generate energy and fire high-speed attacks.",
+     "Klink > Klang > Klinklang"},
+
+    {"Tynamo","Electric","",
+     "An Electric type Pokemon that lives in groups and generates electricity. It can move through water and attack with electrical energy.",
+     "Tynamo > Eelektrik > Eelektross"},
+
+    {"Eelektrik","Electric","",
+     "An Electric type Pokemon that uses its teeth to drain electricity from opponents. It can generate strong electrical currents throughout its body.",
+     "Tynamo > Eelektrik > Eelektross"},
+
+    {"Eelektross","Electric","",
+     "A powerful Electric type Pokemon that can move across land despite having an eel-like body. It uses electricity to hunt and attack.",
+     "Tynamo > Eelektrik > Eelektross"},
+
+    {"Elgyem","Psychic","",
+     "A Psychic type Pokemon with a mysterious appearance. It can manipulate objects with psychic powers and communicate through telepathy.",
+     "Elgyem > Beheeyem"},
+
+    {"Beheeyem","Psychic","",
+     "A Psychic type Pokemon resembling an alien. It has powerful psychic abilities and can manipulate the memories of other creatures.",
+     "Elgyem > Beheeyem"},
+
+    {"Litwick","Ghost","Fire",
+     "A Ghost and Fire type Pokemon with a small flame on its head. Its flame attracts living creatures while it absorbs their life energy.",
+     "Litwick > Lampent > Chandelure"},
+
+    {"Lampent","Ghost","Fire",
+     "A Ghost and Fire type Pokemon resembling a lantern. It searches for places where people have died and absorbs their life energy.",
+     "Litwick > Lampent > Chandelure"},
+
+    {"Chandelure","Ghost","Fire",
+     "A powerful Ghost and Fire type Pokemon resembling a chandelier. Its flames can consume the life energy of those it encounters.",
+     "Litwick > Lampent > Chandelure"},
+
+    {"Axew","Dragon","",
+     "A Dragon type Pokemon with small tusks that grow stronger over time. It uses its tusks to cut through trees and defend itself.",
+     "Axew > Fraxure > Haxorus"},
+
+    {"Fraxure","Dragon","",
+     "A Dragon type Pokemon with large, strong tusks. It sharpens its tusks against rocks and relies on them as powerful weapons.",
+     "Axew > Fraxure > Haxorus"},
+
+    {"Haxorus","Dragon","",
+     "A powerful Dragon type Pokemon with enormous axe-like tusks. Its tusks are extremely strong and can cut through thick steel.",
+     "Axew > Fraxure > Haxorus"},
+
+    {"Cubchoo","Ice","",
+     "An Ice type Pokemon with a runny nose that contains freezing fluid. The strength of its attacks depends on the quality of the fluid.",
+     "Cubchoo > Beartic"},
+
+    {"Beartic","Ice","",
+     "A powerful Ice type Pokemon resembling a polar bear. It can freeze water with its breath and create ice from its body.",
+     "Cubchoo > Beartic"},
+
+    {"Cryogonal","Ice","",
+     "An Ice type Pokemon made of crystalline ice. It can create freezing chains and capture opponents with its cold energy.",
+     "Cryogonal"},
+
+    {"Shelmet","Bug","",
+     "A Bug type Pokemon that protects itself with a helmet-like shell. It has a strong evolutionary connection with Karrablast.",
+     "Shelmet > Accelgor"},
+
+    {"Accelgor","Bug","",
+     "A fast Bug type Pokemon that resembles a ninja. It moves at incredible speeds and uses its agility to overwhelm opponents.",
+     "Shelmet > Accelgor"},
+
+    {"Stunfisk","Ground","Electric",
+     "A Ground and Electric type Pokemon that hides beneath mud and sand. It can shock creatures that step on its body.",
+     "Stunfisk"},
+
+    {"Mienfoo","Fighting","",
+     "A Fighting type Pokemon that practices precise martial arts techniques. It becomes stronger by training with others.",
+     "Mienfoo > Mienshao"},
+
+    {"Mienshao","Fighting","",
+     "A powerful Fighting type Pokemon with long fur-covered arms. It uses fast and graceful martial arts movements to defeat opponents.",
+     "Mienfoo > Mienshao"},
+
+    {"Druddigon","Dragon","",
+     "A Dragon type Pokemon with a hard, red head and blue body. It is highly territorial and uses its powerful claws in battle.",
+     "Druddigon"},
+
+    {"Golett","Ground","Ghost",
+     "A Ground and Ghost type Pokemon made from ancient clay. It follows orders given to it long ago and possesses mysterious strength.",
+     "Golett > Golurk"},
+
+    {"Golurk","Ground","Ghost",
+     "A powerful Ground and Ghost type Pokemon resembling a giant guardian. It can fly by transforming its body and releasing energy.",
+     "Golett > Golurk"},
+
+    {"Pawniard","Dark","Steel",
+     "A Dark and Steel type Pokemon covered in sharp blades. It follows a leader and trains relentlessly to become stronger.",
+     "Pawniard > Bisharp > Kingambit"},
+
+    {"Bisharp","Dark","Steel",
+     "A powerful Dark and Steel type Pokemon with blades covering its body. It leads groups of Pawniard and fights fiercely for territory.",
+     "Pawniard > Bisharp > Kingambit"},
+
+    {"Bouffalant","Normal","",
+     "A Normal type Pokemon resembling a large buffalo. Its thick mane protects its head as it charges opponents with great force.",
+     "Bouffalant"},
+
+    {"Rufflet","Normal","Flying",
+     "A Normal and Flying type Pokemon that resembles a young eagle. It bravely challenges larger opponents to strengthen itself.",
+     "Rufflet > Braviary"},
+
+    {"Braviary","Normal","Flying",
+     "A powerful Normal and Flying type Pokemon inspired by a bald eagle. It is courageous and fiercely protective of its companions.",
+     "Rufflet > Braviary"},
+
+    {"Vullaby","Dark","Flying",
+     "A Dark and Flying type Pokemon that wears a bone-like shell for protection. It is cared for by larger Pokemon while growing.",
+     "Vullaby > Mandibuzz"},
+
+    {"Mandibuzz","Dark","Flying",
+     "A powerful Dark and Flying type Pokemon that uses bones to create armor. It searches for prey from the sky and attacks swiftly.",
+     "Vullaby > Mandibuzz"},
+
+    {"Heatmor","Fire","",
+     "A Fire type Pokemon with a long, hot tongue. It uses the heat produced inside its body to melt through tough materials.",
+     "Heatmor"},
+
+      {"Durant","Bug","Steel",
+       "A Bug and Steel type Pokemon that resembles a large ant. Its body is covered in hard armor, protecting it from attacks and allowing it to work together with its colony.",
+       "Durant"},
+
+    {"Deino","Dark","Dragon",
+     "A Dark and Dragon type Pokemon that is almost completely blind. It explores its surroundings by biting and bumping into things.",
+     "Deino > Zweilous > Hydreigon"},
+
+    {"Zweilous","Dark","Dragon",
+     "A Dark and Dragon type Pokemon with two heads that constantly compete with each other. Each head tries to eat more than the other.",
+     "Deino > Zweilous > Hydreigon"},
+
+    {"Hydreigon","Dark","Dragon",
+     "A powerful Dark and Dragon type Pokemon with three heads. It attacks anything that moves and is known for its fierce and destructive nature.",
+     "Deino > Zweilous > Hydreigon"},
+
+    {"Larvesta","Bug","Fire",
+     "A Bug and Fire type Pokemon covered in flames. It is said to have been born from volcanic fire and uses its fiery body to protect itself.",
+     "Larvesta > Volcarona"},
+
+    {"Volcarona","Bug","Fire",
+     "A powerful Bug and Fire type Pokemon with six wings. It releases fiery scales and is sometimes said to have saved people from cold winters.",
+     "Larvesta > Volcarona"},
+
+    {"Cobalion","Steel","Fighting",
+     "A Steel and Fighting type Legendary Pokemon with a body as hard as steel. It leads the Swords of Justice and protects Pokemon from danger.",
+     "Cobalion"},
+
+    {"Terrakion","Rock","Fighting",
+     "A Rock and Fighting type Legendary Pokemon with immense strength. It can smash through walls and protect Pokemon from those who threaten them.",
+     "Terrakion"},
+
+    {"Virizion","Grass","Fighting",
+     "A Grass and Fighting type Legendary Pokemon with incredible speed and graceful movements. It protects Pokemon from those who seek to harm them.",
+     "Virizion"},
+
+    {"Tornadus","Flying","",
+     "A Flying type Legendary Pokemon that rides powerful winds. It can create enormous storms by flying through the sky at tremendous speed.",
+     "Tornadus"},
+
+    {"Thundurus","Electric","Flying",
+     "An Electric and Flying type Legendary Pokemon that shoots powerful lightning from its tail. It flies through the sky while causing violent storms.",
+     "Thundurus"},
+
+    {"Reshiram","Dragon","Fire",
+     "A Dragon and Fire type Legendary Pokemon with immense power. Its tail can burn with intense heat and it is associated with truth.",
+     "Reshiram"},
+
+    {"Zekrom","Dragon","Electric",
+     "A Dragon and Electric type Legendary Pokemon with powerful electrical energy. Its tail generates electricity and it is associated with ideals.",
+     "Zekrom"},
+
+    {"Landorus","Ground","Flying",
+     "A Ground and Flying type Legendary Pokemon that is said to bring rich harvests. It absorbs energy from the land and uses powerful attacks.",
+     "Landorus"},
+
+    {"Kyurem","Dragon","Ice",
+     "A Dragon and Ice type Legendary Pokemon with an extremely cold body. It can freeze its surroundings and is said to be the leftover shell of a powerful dragon.",
+     "Kyurem"},
+
+    {"Keldeo","Water","Fighting",
+     "A Water and Fighting type Mythical Pokemon that trains with the Swords of Justice. Its horn can release powerful attacks and help it move across water.",
+     "Keldeo"},
+
+    {"Meloetta","Normal","Psychic",
+     "A Normal and Psychic type Mythical Pokemon that can change its form through music. Its beautiful melodies can influence the emotions of those who hear them.",
+     "Meloetta"},
+
+    {"Genesect","Bug","Steel",
+     "A Bug and Steel type Mythical Pokemon that was modified by Team Plasma. Its powerful cannon can use different drives to change the type of its special attack.",
+     "Genesect"},
 
 
 
