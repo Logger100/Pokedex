@@ -1,3 +1,5 @@
+<h1>Pokedex News</h1>
+<h3>Gen 6 will be added soon!</h3>
 Just put POKEDEX.G1A on the calc it should work
 Very helpful for Pokemon lovers(who speak english)
 The search feature can be opened by press ALPHA on the main menu and works with numbers and letters(very usefull)
