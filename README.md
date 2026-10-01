@@ -1,6 +1,8 @@
 <h1>Pokedex News</h1>
 <h3>Gen 6 will be added soon!</h3>
 Expected to be released Oct 1 or 2, 2026.
+If it takes a little longer I am having some serious issues in pokemon.h
+
 <p>--------------------------------------------------------------</p>
 Just put POKEDEX.G1A on the calc it should work
 Very helpful for Pokemon lovers(who speak english)
