@@ -1,7 +1,7 @@
 <h1>Pokedex News</h1>
 <h3>Abandoned!!??</h3>
 I am very sad to say this project in cancelled. It is taking up too much of my time and I do not feel like fixing all the bugs that happen when adding new Pokemon to pokemon.h
-
+I give full permission to ANYONE to download the code, modify it, and re-distribute it at their will.
 <p>--------------------------------------------------------------</p>
 Just put POKEDEX.G1A on the calc it should work
 Very helpful for Pokemon lovers(who speak english)
